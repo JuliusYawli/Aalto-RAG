@@ -10,7 +10,7 @@ A production-ready RAG (Retrieval-Augmented Generation) system for domain-specif
 - **Semantic Search**: Vector-based similarity search with embeddings
 - **Context-Aware Answers**: LLM-powered responses grounded in your documents
 - **Source Attribution**: See which documents were used for each answer
-- **Multiple Interfaces**: 
+- **Multiple Interfaces**:
   - Command-line interface (CLI)
   - Interactive Q&A mode
   - Jupyter notebook for experimentation
@@ -29,12 +29,14 @@ A production-ready RAG (Retrieval-Augmented Generation) system for domain-specif
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/JuliusYawli/Aalto-RAG.git
 cd Aalto-RAG
 ```
 
 2. Install dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -42,6 +44,7 @@ pip install -r requirements.txt
 3. Set up your environment:
 
 **For Free Ollama (Default):**
+
 ```bash
 # Install Ollama (macOS)
 brew install ollama
@@ -57,6 +60,7 @@ ollama pull nomic-embed-text
 ```
 
 **For OpenAI (When You Have Credits):**
+
 ```bash
 # Edit .env file and change:
 # USE_OLLAMA=false
@@ -74,6 +78,7 @@ python main.py --index
 ```
 
 This will:
+
 - Load all documents from the `documents/` directory
 - Split them into chunks
 - Create embeddings
@@ -82,11 +87,13 @@ This will:
 #### 2. Ask Questions
 
 **Single Question Mode:**
+
 ```bash
 python main.py --question "What are the best practices for machine learning?"
 ```
 
 **Interactive Mode:**
+
 ```bash
 python main.py --interactive
 ```
@@ -97,7 +104,7 @@ In interactive mode, you can ask multiple questions in a conversation-like inter
 
 ### Project Structure
 
-```
+```text
 Aalto-RAG/
 ├── documents/              # Place your documents here
 │   ├── ml_best_practices.txt
@@ -142,6 +149,7 @@ jupyter notebook rag_notebook.ipynb
 ```
 
 The notebook includes:
+
 - Step-by-step explanations
 - Sample documents
 - Example questions
@@ -183,7 +191,7 @@ Edit `.env` or `src/config.py` to customize:
 
 ### Architecture
 
-```
+```text
 User Question
      ↓
 Question Embedding (OpenAI)
@@ -202,21 +210,25 @@ Answer + Sources
 ## 💡 Example Use Cases
 
 ### Customer Support
+
 - Create a knowledge base from product manuals and FAQs
 - Answer customer questions automatically
 - Provide consistent, accurate responses
 
 ### Technical Documentation
+
 - Index API documentation, code examples, and guides
 - Help developers find relevant information quickly
 - Reduce time spent searching documentation
 
 ### Research & Analysis
+
 - Process scientific papers and research documents
 - Extract relevant information across multiple sources
 - Compare and synthesize information
 
 ### Legal & Compliance
+
 - Search through contracts and regulations
 - Find relevant case law and precedents
 - Ensure compliance with policies
@@ -230,6 +242,7 @@ The repository includes three sample documents:
 3. **rag_systems.txt**: In-depth explanation of RAG systems
 
 Try these example questions:
+
 - "What is RAG and how does it work?"
 - "What are some best practices for machine learning?"
 - "How do transformers work in NLP?"
@@ -264,6 +277,7 @@ self.prompt_template = """Your custom prompt here..."""
 ### Using Different Vector Databases
 
 The system uses ChromaDB by default, but you can swap it for others:
+
 - Pinecone (managed, scalable)
 - Weaviate (feature-rich)
 - FAISS (high performance)
@@ -288,6 +302,7 @@ This project is open source and available under the MIT License.
 ## 🙏 Acknowledgments
 
 Built with:
+
 - [LangChain](https://python.langchain.com/) - Framework for LLM applications
 - [ChromaDB](https://www.trychroma.com/) - Vector database
 - [OpenAI](https://openai.com/) - Embeddings and language models
@@ -298,4 +313,4 @@ For questions or feedback, please open an issue on GitHub.
 
 ---
 
-**Happy RAG-ing! 🚀**
+## Happy RAG-ing! 🚀
