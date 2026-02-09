@@ -1,0 +1,452 @@
+
+--- Page 1 ---
+Introduction to LLMs and 
+Their Applications
+Dariush Salami
+5th Feb 2026
+Introduction to AI, ML, and LLMs 1
+--- Page 2 ---
+Linear classifiers revisited: Perceptron
+Introduction to AI, ML, and LLMs 2
+--- Page 3 ---
+Training of multi-layer networks
+Introduction to AI, ML, and LLMs 3
+• Find network weights to minimize the prediction loss between true 
+and estimated labels of training examples:
+• Update weights by gradient descent: 
+
+--- Page 4 ---
+Gradient Computation
+Introduction to AI, ML, and LLMs 4
+f1 f2 f3 f4 f5x
+w1 w2 w3 w4 w5
+z5=zz4z3z2z1
+Back-Propagation
+--- Page 5 ---
+Regularization
+Introduction to AI, ML, and LLMs 5
+• It is common to add a penalty (e.g., quadratic) on weight 
+magnitudes to the objective function:
+• Quadratic penalty encourages network to use all of its inputs “a little” 
+rather than a few inputs “a lot”
+
+--- Page 6 ---
+Course schedule
+01 Introduction to AI, ML, and LLMs
+02 Basics of Machine Learning
+03 Data Preprocessing for NLP
+04 Introduction to LLMs and Their Applications
+05 Supervised Learning for NLP Tasks
+06 Advanced NLP Techniques
+07 Language Generation with LLMs (Industrial talk)
+08 Ethical Considerations and Challenges in LLMs
+09 Model Deployment and Integration in Applications
+10 Final Project and Presentation
+Introduction to AI, ML, and LLMs 6
+--- Page 7 ---
+Attention
+Introduction to AI, ML, and LLMs
+7
+--- Page 8 ---
+LLMs are built out of transformers
+• Transformer: a specific kind of network architecture, like a fancier 
+feedforward network, but based on attention.
+Introduction to AI, ML, and LLMs 8
+
+--- Page 9 ---
+A brief history of transformers
+• 1990 Static Word Embeddings
+• 2003 Neural Language Model
+• 2008 Multi-Task Learning
+• 2015 Attention
+• 2017 Transformer
+• 2018 Contextual Word Embeddings and Pretraining
+• 2019 Prompting
+Introduction to AI, ML, and LLMs 9
+--- Page 10 ---
+Instead of starting with the big picture
+• Let's consider the embeddings for an individual word from a 
+particular layer
+Introduction to AI, ML, and LLMs 10
+
+--- Page 11 ---
+Problem with static embeddings (word2vec)
+• They are static! The embedding for a word doesn't reflect how its 
+meaning changes in context.
+• The chicken didn't cross the road because it was too tired.
+• What is the meaning represented in the static embedding for "it"?
+Introduction to AI, ML, and LLMs 11
+--- Page 12 ---
+Contextual Embeddings
+• Intuition: a representation of meaning of a word should be 
+different in different contexts!
+• Contextual Embedding: each word has a different vector that 
+expresses different meanings depending on the surrounding 
+words.
+• How to compute contextual embeddings?
+• Attention
+Introduction to AI, ML, and LLMs 12
+--- Page 13 ---
+Contextual Embeddings
+• The chicken didn't cross the road because it
+• What should be the properties of "it"?
+• The chicken didn't cross the road because it was too tired.
+• The chicken didn't cross the road because it was too wide.
+• At this point in the sentence, it's probably referring to either the 
+chicken or the street.
+Introduction to AI, ML, and LLMs 13
+--- Page 14 ---
+Intuition of attention
+• Build up the contextual embedding from a word by selectively 
+integrating information from all the neighboring words.
+• We say that a word "attends to" some neighboring words more 
+than others.
+Introduction to AI, ML, and LLMs 14
+
+--- Page 15 ---
+Attention definition
+• A mechanism for helping compute the embedding for a token by 
+selectively attending to and integrating information from 
+surrounding tokens (at the previous layer).
+• More formally: a method for doing a weighted sum of vectors.
+Introduction to AI, ML, and LLMs 15
+--- Page 16 ---
+Attention is left-to-right
+Introduction to AI, ML, and LLMs 16
+--- Page 17 ---
+Simplified version of attention: a sum of prior words 
+weighted by their similarity with the current word!
+• Given a sequence of token embeddings:
+• Produce: ai=a weighted sum of x1 through x7 (and xi) weighted by 
+their similarity to xi
+Introduction to AI, ML, and LLMs 17
+
+--- Page 18 ---
+Dot product as a metric for similarity
+𝐮⋅𝐯=|𝐮||𝐯|cos𝜃
+Introduction to AI, ML, and LLMs 18
+Suppose 𝑣 = 1. Then, cos 𝜃  defines the directional similarity.
+--- Page 19 ---
+Intuition of attention
+Introduction to AI, ML, and LLMs 19
+
+--- Page 20 ---
+An Actual Attention Head: slightly more complicated
+Introduction to AI, ML, and LLMs 20
+• High-level idea: instead of using vectors (like xi and x4) directly, 
+we'll represent 3 separate roles each vector xi plays:
+• Q uery: As the current element being compared to the preceding inputs.
+• Key: as a preceding input that is being compared to the current element 
+to determine a similarity.
+• Value: a value of a preceding element that gets weighted and summed.
+--- Page 21 ---
+Attention intuition
+Introduction to AI, ML, and LLMs 21
+
+--- Page 22 ---
+Attention intuition
+Introduction to AI, ML, and LLMs 22
+
+--- Page 23 ---
+An Actual Attention Head: slightly more complicated
+Introduction to AI, ML, and LLMs 23
+• We'll use matrices to project each vector xi into a representation 
+of its role as query, key, value:
+• Query: WQ
+• Key: WK
+• Value: WV
+
+--- Page 24 ---
+An Actual Attention Head: slightly more complicated
+Introduction to AI, ML, and LLMs 24
+• Given these 3 representation of xi
+• To compute similarity of current element xi with some prior 
+element xj, we use dot product between qi and kj. And instead of 
+summing up xj, we sum up vj.
+Why?
+--- Page 25 ---
+Calculating the 
+value of a3
+Introduction to AI, ML, and LLMs 25
+--- Page 26 ---
+An Actual Attention Head: slightly more complicated
+Introduction to AI, ML, and LLMs 26
+• Instead of one attention head, we'll have lots of them!
+• Intuition: each head might be attending to the context for different 
+purposes
+• Different linguistic relationships or patterns in the context
+
+--- Page 27 ---
+Multi-head attention
+Introduction to AI, ML, and LLMs 27
+
+--- Page 28 ---
+Summary
+Introduction to AI, ML, and LLMs 28
+• Attention is a method for enriching the representation of a token 
+by incorporating contextual information.
+• The result: the embedding for each word will be different in 
+different contexts!
+• Contextual embeddings: a representation of word meaning in its 
+context.
+• We'll see in the next lecture that attention can also be viewed as a 
+way to move information from one token to another.
+--- Page 29 ---
+Transformer Block
+Introduction to AI, ML, and LLMs
+29
+--- Page 30 ---
+The residual stream: each token gets passed up and 
+modified
+Introduction to AI, ML, and LLMs 30
+
+--- Page 31 ---
+We need nonlinearities, so a feedforward layer
+Introduction to AI, ML, and LLMs 31
+
+--- Page 32 ---
+Introduction to AI, ML, and LLMs 32
+--- Page 33 ---
+Vanishing (exploding) gradients
+• Simply put, the vanishing gradients issue occurs when we use the 
+Sigmoid or Tanh activation functions in the hidden layer
+• These functions squish a large input space into a small space.
+Introduction to AI, ML, and LLMs 33
+
+--- Page 34 ---
+Layer norm: the vector xi is normalized twice
+Introduction to AI, ML, and LLMs 34
+
+--- Page 35 ---
+Layer Norm
+Introduction to AI, ML, and LLMs 35
+• Layer norm is a variation of the z-score from statistics, applied to a 
+single vector in a hidden layer:
+
+--- Page 36 ---
+Putting together everything in a single transformer block
+Introduction to AI, ML, and LLMs 36
+
+--- Page 37 ---
+A transformer is a 
+stack of these 
+blocks
+so, all the vectors 
+are of the same 
+dimensionality d
+Introduction to AI, ML, and LLMs 37
+--- Page 38 ---
+Residual streams and attention
+Introduction to AI, ML, and LLMs 38
+• Notice that all parts of the transformer block apply to 1 residual 
+stream (1 token).
+• Except attention, which takes information from other tokens.
+• Elhage et al. (2021) show that we can view attention heads as 
+literally moving information from the residual stream of a 
+neighboring token into the current stream.
+
+--- Page 39 ---
+Parallelizing Attention 
+Computation
+Introduction to AI, ML, and LLMs
+39
+--- Page 40 ---
+Parallelizing computation using X
+Introduction to AI, ML, and LLMs 40
+• For attention/transformer block we've been computing a single 
+output at a single time step i in a single residual stream.
+• But we can pack the N tokens of the input sequence into a single 
+matrix X of size [N × d].
+• Each row of X is the embedding of one token of the input.
+• X can have 1k-32k rows, each of the dimensionality of the 
+embedding d (the model dimension)
+
+--- Page 41 ---
+QKT
+Introduction to AI, ML, and LLMs 41
+• Now can do a single matrix multiply to combine Q and K
+
+--- Page 42 ---
+Parallelizing attention
+Introduction to AI, ML, and LLMs 42
+• Scale the scores, take the softmax, and then multiply the result by 
+V resulting in a matrix of shape N × d
+• An attention vector for each input taken
+
+--- Page 43 ---
+Masking out the future
+Introduction to AI, ML, and LLMs 43
+• What is this mask function?
+QKT has a score for each query dot every key, including those that 
+follow the query.
+• Guessing the next word is pretty simple if you already know it!
+
+--- Page 44 ---
+Masking out the 
+future
+• Add −∞ to cells in upper triangle so 
+that softmax turns it to 0.
+• Plus, attention is quadratic in length
+Introduction to AI, ML, and LLMs 44
+--- Page 45 ---
+Bigger picture
+Introduction to AI, ML, and LLMs 45
+softmax
+--- Page 46 ---
+Parallelizing Multi-head Attention
+Introduction to AI, ML, and LLMs 46
+
+--- Page 47 ---
+Input and output: Position 
+embeddings and the 
+Language Model Head
+Introduction to AI, ML, and LLMs
+47
+--- Page 48 ---
+Token and Position Embeddings
+Introduction to AI, ML, and LLMs 48
+• The matrix X (of shape [N × d]) has an embedding for each word in 
+the context.
+• This embedding is created by adding two distinct embedding for 
+each input
+• token embedding
+• positional embedding
+• Tom bit a dog.
+• A dog bit Tom.
+--- Page 49 ---
+Byte Pair Embedding (BPE)
+Introduction to AI, ML, and LLMs 49
+
+--- Page 50 ---
+Token Embeddings
+Introduction to AI, ML, and LLMs 50
+• Embedding matrix E has shape [|V | × d ].
+• One row for each of the |V | tokens in the vocabulary.
+• Each word is a row vector of d dimensions
+• Given: string "Thanks for all the”
+1. Tokenize with BPE and convert into vocab indices
+w = [5,4000,10532,2224]
+2. Select the corresponding rows from E, each row an embedding
+(row 5, row 4000, row 10532, row 2224)
+--- Page 51 ---
+Position Embeddings
+Introduction to AI, ML, and LLMs 51
+• There are many methods, but we'll just describe the simplest: 
+absolute position.
+• More advanced one at
+https://kikaben.com/transformers-positional-encoding/
+• Goal: learn a position embedding matrix Epos of shape [1 × N ].
+• Start with randomly initialized embeddings
+• i.e., just as we have an embedding for token fish, we’ll have an embedding 
+for position 3 and position 17.
+• As with word embeddings, these position embeddings are learned along 
+with other parameters during training.
+--- Page 52 ---
+Each x is just the sum of word and position embeddings.
+Introduction to AI, ML, and LLMs 52
+
+--- Page 53 ---
+Language modeling head
+Introduction to AI, ML, and LLMs 53
+
+--- Page 54 ---
+Language modeling head
+Introduction to AI, ML, and LLMs 54
+
+--- Page 55 ---
+Language modeling head
+Introduction to AI, ML, and LLMs 55
+
+--- Page 56 ---
+Transformers with 
+Hugging Face
+Introduction to AI, ML, and LLMs
+56
+--- Page 57 ---
+2022: Transformers are eating Deep Learning.
+Introduction to AI, ML, and LLMs 57
+
+--- Page 58 ---
+Transformer models in the wild!
+Introduction to AI, ML, and LLMs 58
+
+--- Page 59 ---
+What is Hugging Face
+• Hugging Face is a leading platform for natural language 
+processing (NLP) and AI.
+• It provides open-source tools, libraries, and pre-trained models 
+for NLP , machine learning, and AI applications.
+• Popular for the Transformers library, which enables easy access to 
+state-of-the-art models like BERT, GPT, and T5.
+Introduction to AI, ML, and LLMs 59
+--- Page 60 ---
+Introduction to AI, ML, and LLMs 60
+Hugging Face Hub: Github of Machine Learning
+
+--- Page 61 ---
+Introduction to AI, ML, and LLMs 61
+Hugging face: one of the fastest growing open-source 
+projects!
+--- Page 62 ---
+Datasets in Hugging Face
+• Hugging Face provides access to a vast collection of datasets for 
+NLP tasks through the datasets library.
+• Easily load and explore datasets for tasks like text classification, 
+sentiment analysis, translation, and more.
+• Supports custom datasets, allowing users to prepare data for 
+model training and evaluation.
+• Key features:
+• Access datasets via load_dataset() function.
+• Datasets are optimized for both speed and scalability.
+• Includes built-in dataset versioning and caching
+Introduction to AI, ML, and LLMs 62
+--- Page 63 ---
+Tokenizers
+• Tokenizers convert raw text into a format that models can 
+understand.
+• Hugging Face provides an efficient and customizable tokenizers 
+library to handle tokenization.
+• Key features:
+• Supports different tokenization techniques like Byte-Pair Encoding (BPE), 
+WordPiece, and SentencePiece.
+• Tokenization happens quickly with parallelization support.
+• Handles special tokens like [CLS], [SEP], and padding/truncation 
+automatically.
+• Easily load pre-trained tokenizers with AutoTokenizer.
+Introduction to AI, ML, and LLMs 63
+
+--- Page 64 ---
+Loading Pre-trained models
+• Hugging Face makes it easy to load and use pre-trained models 
+for various tasks like text classification, translation, and text 
+generation.
+• Transformers library provides access to state-of-the-art models 
+like BERT, GPT, T5, and more.
+• Steps to load a model:
+• Use AutoModel or classes like AutoModelForSequenceClassification.
+• Download and load pre-trained models with one line of code.
+• Fine-tune models for specific tasks or use them for inference directly.
+Introduction to AI, ML, and LLMs 64
+
+--- Page 65 ---
+Trainer
+• Hugging Face makes it easy to fine-tune pre-
+trained models on your custom datasets.
+• Use Trainer class to handle training loops, 
+evaluation, and optimization automatically.
+• Define training arguments and train with the 
+Trainer class.
+Introduction to AI, ML, and LLMs 65
+
+--- Page 66 ---
+Notebook
+The best source for learning Hugging 
+Face API is the official notebooks:
+https://huggingface.co/docs/transfo
+rmers/en/notebooks
+Introduction to AI, ML, and LLMs 66
+--- Page 67 ---
+Questions?
+dariush.salami@aalto.fi
+Introduction to AI, ML, and LLMs
+67

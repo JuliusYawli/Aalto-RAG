@@ -1,0 +1,425 @@
+
+--- Page 1 ---
+Supervised Learning for NLP 
+Tasks - Sentiment Analysis
+Dariush Salami
+6th Feb 2026
+Introduction to AI, ML, and LLMs 1
+--- Page 2 ---
+Intuition of attention
+Introduction to AI, ML, and LLMs 2
+
+--- Page 3 ---
+Simplified version of attention: a sum of prior words 
+weighted by their similarity with the current word!
+• Given a sequence of token embeddings:
+• Produce: ai=a weighted sum of x1 through x7 (and xi) weighted by 
+their similarity to xi
+Introduction to AI, ML, and LLMs 3
+
+--- Page 4 ---
+Calculating the 
+value of a3
+Introduction to AI, ML, and LLMs 4
+--- Page 5 ---
+Vanishing (exploding) gradients
+• Simply put, the vanishing gradients issue occurs when we use the 
+Sigmoid or Tanh activation functions in the hidden layer
+• These functions squish a large input space into a small space.
+Introduction to AI, ML, and LLMs 5
+
+--- Page 6 ---
+Putting together everything in a single transformer block
+Introduction to AI, ML, and LLMs 6
+
+--- Page 7 ---
+Course schedule
+01 Introduction to AI, ML, and LLMs
+02 Basics of Machine Learning
+03 Data Preprocessing for NLP
+04 Introduction to LLMs and Their Applications
+05 Supervised Learning for NLP Tasks
+06 Advanced NLP Techniques
+07 Language Generation with LLMs (Industrial talk)
+08 Ethical Considerations and Challenges in LLMs
+09 Model Deployment and Integration in Applications
+10 Final Project and Presentation
+Introduction to AI, ML, and LLMs 7
+--- Page 8 ---
+Sentiment Analysis
+Introduction to AI, ML, and LLMs
+8
+--- Page 9 ---
+Positive or negative movie review?
+• Unbelievably disappointing
+• Full of zany characters and richly applied satire, and some great 
+plot twists
+• This is the greatest screwball comedy ever filmed
+• It was pathetic. The worst part about it was the boxing scenes.
+Introduction to AI, ML, and LLMs 9
+
+--- Page 10 ---
+Introduction to AI, ML, and LLMs 10
+
+--- Page 11 ---
+Introduction to AI, ML, and LLMs 11
+
+--- Page 12 ---
+Twitter sentiment versus Gallup Poll of
+Consumer Confidence
+Introduction to AI, ML, and LLMs 12
+Brendan O'Connor, Ramnath Balasubramanyan, Bryan R. Routledge, and Noah A. Smith. 2010.
+From Tweets to Polls: Linking Text Sentiment to Public Opinion Time Series. In ICWSM-‐2010
+
+--- Page 13 ---
+Twitter sentiment:
+• Johan Bollen, Huina Mao, Xiaojun Zeng. 
+2011. Twitter mood predicts the stock 
+market, Journal of Computational Science 
+2:1, 1-‐8. 10.1016/j.jocs.2010.12.007.
+Introduction to AI, ML, and LLMs 13
+--- Page 14 ---
+• CALM predicts DJIA 3 
+days later
+• At least one current 
+hedge fund uses this 
+algorithm
+Introduction to AI, ML, and LLMs 14
+Bollen et al. (2011)
+--- Page 15 ---
+Introduction to AI, ML, and LLMs 15
+--- Page 16 ---
+Why sentiment analysis?
+• Movie: is this review positive or negative?
+• Products: what do people think about the new iPhone?
+• Public sentiment: how is consumer confidence? Is despair 
+increasing?
+• Politics: what do people think about this candidate or issue?
+• Prediction: predict election outcomes or market trends from 
+sentiment
+Introduction to AI, ML, and LLMs 16
+--- Page 17 ---
+Scherer Typology of Affective States
+• Emotion
+• Brief, intense reactions (e.g., angry, joyful) to major events can be detected in text to identify 
+immediate sentiment spikes, such as positive (elated) or negative (sad) emotions.
+• Mood
+• Longer-lasting, low-intensity feelings (e.g., cheerful, depressed) provide a baseline sentiment 
+context, helping analyze underlying emotional tones over time.
+• Interpersonal stances
+• Attitudes toward others (e.g., friendly, contemptuous) in interactions can reveal relational 
+sentiments, useful for analyzing social media exchanges.
+• Attitudes
+• Enduring beliefs or dispositions (e.g., liking, hating) indicate consistent sentiment toward 
+specific entities, aiding in brand or topic sentiment tracking.
+• Personality traits
+• Stable traits (e.g., anxious, hostile) can influence how sentiment is expressed, allowing for 
+deeper profiling of authors or users.
+Introduction to AI, ML, and LLMs 17
+--- Page 18 ---
+Scherer Typology of Affective States
+• Emotion
+• Brief, intense reactions (e.g., angry, joyful) to major events can be detected in text to identify 
+immediate sentiment spikes, such as positive (elated) or negative (sad) emotions.
+• Mood
+• Longer-lasting, low-intensity feelings (e.g., cheerful, depressed) provide a baseline sentiment 
+context, helping analyze underlying emotional tones over time.
+• Interpersonal stances
+• Attitudes toward others (e.g., friendly, contemptuous) in interactions can reveal relational 
+sentiments, useful for analyzing social media exchanges.
+• Attitudes
+• Enduring beliefs or dispositions (e.g., liking, hating) indicate consistent sentiment toward 
+specific entities, aiding in brand or topic sentiment tracking.
+• Personality traits
+• Stable traits (e.g., anxious, hostile) can influence how sentiment is expressed, allowing for 
+deeper profiling of authors or users.
+Introduction to AI, ML, and LLMs 18
+--- Page 19 ---
+Sentiment Analysis
+• Sentiment analysis is the detection of attitudes
+“enduring, affectively colored beliefs, dispositions towards objects or persons”
+• Holder (source) of attitude
+• Target (aspect) of attitude
+• Type of attitude
+• From a set of types: Like, love, hate, value, desire, etc.
+• Or (more commonly) simple weighted polarity: positive, negative, neutral, together 
+with strength
+• Text containing the attitude
+• Sentence or entire document
+Introduction to AI, ML, and LLMs 19
+--- Page 20 ---
+Sentiment Analysis
+• Simplest task:
+• Is the attitude of this text positive or negative?
+• More complex:
+• Rank the attitude of this text from 1 to 5
+• Advanced:
+• Detect the target, source, or complex attitude types
+Introduction to AI, ML, and LLMs 20
+--- Page 21 ---
+Baseline Algorithm
+Introduction to AI, ML, and LLMs
+21
+--- Page 22 ---
+Sentiment Classification in Movie Reviews
+• Polarity detection:
+• Is an IMDB movie review positive or negative?
+• Data: Polarity Data 2.0:
+• https://www.cs.cornell.edu/people/pabo/movie-review-data/
+Introduction to AI, ML, and LLMs 22
+Bo Pang, Lillian Lee, and Shivakumar Vaithyanathan. 2002. Thumbs up? 
+Sentiment Classification using Machine Learning Techniques. EMNLP-
+‐2002, 79—86. Bo Pang and Lillian Lee. 2004. A Sentimental Education: 
+Sentiment Analysis Using Subjectivity Summarization Based on 
+Minimum Cuts. ACL, 271-‐278
+--- Page 23 ---
+Baseline Algorithm (adapted from Pang and 
+Lee)
+Introduction to AI, ML, and LLMs 23
+
+--- Page 24 ---
+Baseline Algorithm (adapted from Pang and 
+Lee)
+Introduction to AI, ML, and LLMs 24
+Tokenization
+Feature 
+Extraction
+Classification 
+using different 
+classifiers
+Naïve Bayes
+MaxEnt
+SVM
+--- Page 25 ---
+Sentiment Tokenization Issues
+• Deal with HTML and XML markup
+• Twitter mark-up (names, hash tags)
+• Capitalization (preserve for words in all 
+caps)
+• Phone numbers, dates
+• Emoticons
+• Useful code:
+• http://sentiment.christopherpotts.ne
+t/tokenizing.html
+• https://github.com/brendano/tweetm
+otif
+Introduction to AI, ML, and LLMs 25
+--- Page 26 ---
+Extracting Features for Sentiment 
+Classification
+Introduction to AI, ML, and LLMs 26
+• I didn’t like this movie vs I really like this movieHow to handle 
+negation
+• Only adjectives
+• All words
+• All words turns out to work better, at least on 
+this data
+Which words 
+to use?
+--- Page 27 ---
+Negation
+• Add NOT_ to every word between negation and following 
+punctuation:
+• didn’t like this movie , but I
+• to
+• didn’t NOT_like NOT_this NOT_movie but I
+Introduction to AI, ML, and LLMs 27
+Das, Sanjiv and Mike Chen. 2001. Yahoo! for Amazon: 
+Extracting market sentiment from stock message boards. In 
+Proceedings of the Asia Pacific Finance Association Annual 
+Conference (APFA). Bo Pang, Lillian Lee, and Shivakumar 
+Vaithyanathan. 2002. Thumbs up? Sentiment Classification 
+using Machine Learning Techniques. EMNLP-2002, 79—86.
+--- Page 28 ---
+Naïve Bayes
+Introduction to AI, ML, and LLMs
+28
+--- Page 29 ---
+Motivation
+• We want to predict something.
+• We have some text related to this something.
+• something = target label Y
+• text = text features X
+Given X, what is the most probable Y?
+Introduction to AI, ML, and LLMs 29
+--- Page 30 ---
+Motivation: Author Detection
+X=
+Y= 
+Introduction to AI, ML, and LLMs 30
+Alas the day! take heed of him; he stabbed me in mine own 
+house, and that most beastly: in good faith, he cares not 
+what mischief he does. If his weapon be out: he will foin like 
+any devil; he will spare neither man, woman, nor child.
+{ Charles Dickens, William Shakespeare, Herman 
+Melville, Jane Austin, Homer, Leo Tolstoy }
+
+--- Page 31 ---
+The Naïve Bayes Classifier
+Introduction to AI, ML, and LLMs 31
+Posterior
+prob.
+Prior
+prob. Likelihood
+Marginal
+Prob.
+--- Page 32 ---
+The Naïve Bayes Classifier
+Introduction to AI, ML, and LLMs 32
+
+--- Page 33 ---
+Deriving Naïve Bayes
+• Idea: use the training data to directly estimate:
+• We can use these to estimate P(Y | X) with Bayes rule.
+• Remember: representing the full joint probability is not practical.
+Introduction to AI, ML, and LLMs 33
+
+--- Page 34 ---
+Deriving Naïve Bayes
+• However, if we assume that the attributes are independent, 
+estimation is easy!
+• In other words, we use language models that assume words are 
+conditionally independent.
+Introduction to AI, ML, and LLMs 34
+
+--- Page 35 ---
+Deriving Naïve Bayes
+• Let X = (X1,..,Xn) and label Y be discrete.
+• Then, we can estimate P(Xi|Yi) and P(Yi) directly from the training 
+data by counting!
+• P(Sky = sunny | Play = yes) = ? P(Humid = high | Play = yes) = ?
+Introduction to AI, ML, and LLMs 35
+
+--- Page 36 ---
+Deriving Naïve Bayes
+Introduction to AI, ML, and LLMs 36
+
+--- Page 37 ---
+Introduction to AI, ML, and LLMs 37
+
+--- Page 38 ---
+Binarized (Boolean feature) Multinomial Naïve 
+Bayes
+• Intuition:
+• For sentiment (and probably for other text classification domains) word 
+occurrence may matter more than word frequency:
+• The occurrence of the word fantastic tells us a lot
+• The fact that it occurs 5 times may not tell us much more.
+• Boolean Multinomial Naïve Bayes
+• Clips all the word counts in each document at 1
+Introduction to AI, ML, and LLMs 38
+
+--- Page 39 ---
+Boolean Multinomial Naïve Bayes: Learning
+• From training corpus, extract Vocabulary
+Introduction to AI, ML, and LLMs 39
+• Calculate P(Cj) terms
+• For each cj in C do
+• docsj = all docs with class cj
+• Calculate P(wk|cj) terms
+• Remove duplicates in each doc
+• For each word wk in Vocabulary
+• nk=# of occurrence of wk in 
+all docs of class cj
+
+--- Page 40 ---
+Boolean Multinomial Naïve Bayes on a test 
+document d
+• First remove all duplicate words from d
+• Then compute NB using the same equation:
+Introduction to AI, ML, and LLMs 40
+
+--- Page 41 ---
+Normal vs. Boolean Multinomial NB
+Introduction to AI, ML, and LLMs 41
+
+--- Page 42 ---
+Binarized (Boolean feature) Multinomial Naïve 
+Baye
+• Binary seems to work better than full word counts
+• This is not the same as Multivariate Bernoulli Naïve Bayes
+• MBNB doesn’t work well for sentiment or other text tasks
+• Other possibility: log(freq(w))
+Introduction to AI, ML, and LLMs 42
+• B. Pang, L. Lee, and S. Vaithyanathan. 2002. Thumbs up? Sentiment Classification using Machine Learning Techniques. EMNLP--
+‐2002, 79—86.
+• V . Metsis, I. Androutsopoulos, G. Paliouras. 2006. Spam Filtering with Naive Bayes – Which Naive Bayes? CEAS 2006 -‐ Third 
+Conference on Email and Anti-‐Spam.
+• K.-‐M. Schneider. 2004. On word frequency information and negative evidence in Naive Bayes text classification. ICANLP , 474-‐485.
+• JD Rennie, L Shih, J Teevan. 2003. Tackling the poor assumptions of naive bayes text classifiers. ICML 2003
+--- Page 43 ---
+Problems: What makes reviews hard to 
+classify?
+• Subtlety:
+• Perfume review in Perfumes: the Guide:
+• “If you are reading this because it is your darling fragrance, please wear it at home 
+exclusively, and tape the windows shut. ”
+• Movie reviews
+• “This film should be brilliant. It sounds like a great plot, the actors are first grade, 
+and the supporting cast is good as well, and Stallone is attempting to deliver a good 
+performance. However, it can’t hold up.
+• “Well as usual Keanu Reeves is nothing special, but surprisingly, the very talented 
+Laurence Fishbourne is not so good either, I was surprised. ”
+Introduction to AI, ML, and LLMs 43
+--- Page 44 ---
+LLMs for Classification 
+using LangChain
+Introduction to AI, ML, and LLMs
+44
+--- Page 45 ---
+LLMs understand language out-of-the-box!
+• Traditional ML: Needs labeled data + training (e.g., Naive Bayes, 
+SVM)
+• Now: LLMs understand language out-of-the-box!
+• Can we use them zero-shot or few-shot for classification?
+Introduction to AI, ML, and LLMs 45
+https://corp.yonyx.com/customer-service/nlp-vs-llm/
+--- Page 46 ---
+Why LangChain?
+• LangChain simplifies:
+• Working with LLMs
+• Structuring chains (prompt templates, parsing)
+• Integration with local models
+• Can plug in Open Source LLMs like Mistral, LLaMA, Falcon, etc.
+Introduction to AI, ML, and LLMs 46
+
+--- Page 47 ---
+Architecture Overview of LangChain
+Introduction to AI, ML, and LLMs 47
+• LangChain Components:
+• LLM: Local/OpenAI/HuggingFace
+• PromptTemplate: Format the 
+input
+• OutputParser: Extract label
+• LLMChain: Connect them
+• Optionally: RAG / Memory / Tools
+https://datasciencedojo.com/newsletter/guide-to-learn-langchain/
+--- Page 48 ---
+Prompt Engineering
+• Simple prompt:
+• Classify the sentiment of the following text as Positive, Negative, or Neutral:
+"{text}"
+• Few-shot version: plaintext Copy Edit
+• Example 1: I love this – Sentiment: Positive  
+Example 2: It’s okay – Sentiment: Neutral  
+Example 3: I hate this – Sentiment: Negative  
+Text: {text}  
+Sentiment:
+Introduction to AI, ML, and LLMs 48
+--- Page 49 ---
+LangChain Code (Step by Step)
+Introduction to AI, ML, and LLMs 49
+
+--- Page 50 ---
+OutputParser for Clean Labels
+Introduction to AI, ML, and LLMs 50
+
+--- Page 51 ---
+Advanced: Use LangChain Runnable
+Introduction to AI, ML, and LLMs 51
+
+--- Page 52 ---
+Questions?
+dariush.salami@aalto.fi
+Introduction to AI, ML, and LLMs
+54

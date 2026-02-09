@@ -1,0 +1,199 @@
+
+--- Page 1 ---
+preencoded.png
+LLMs, Agentic AI, and 
+Document Intelligence
+Dr. Tekin Ç. Uyan | AI Product Architect & Full-Stack Developer
+Creator of Evraka AI. tekin@tekin.fi
+--- Page 2 ---
+preencoded.png
+FOUNDATION
+Why ICT Engineers Should Care
+Operational Efficiency
+Automate network diagnostics, incident response, and 
+system optimization
+Compliance & Security
+Streamline regulatory compliance, risk assessment, and 
+documentation
+Engineering Productivity
+Accelerate code reviews, testing, and technical 
+documentation
+Innovation Edge
+Build intelligent systems that understand context and take 
+action
+--- Page 3 ---
+preencoded.png
+FUNDAMENTALS
+What is a Large Language Model?
+• Neural network trained on massive text datasets
+• Unidirectional= Predicts next token /  Bidirectional = They can see the words before&after, are used more for understanding.    
+• Generative AI: summarize, explain, extract structure
+• Key insight: LLM = probabilistic reasoning engine
+Let's build GPT: from scratch, in code, spelled out by Andrew Karpathy 
+Proprietary LLMs
+Gemini (Google), Claude (Anthropic), GPT (OpenAI)
+Open Source Models
+Llama, Mistral, Phi - deploy on your infrastructure
+--- Page 4 ---
+preencoded.png
+CAPABILITIES
+What LLMs Are Good At (and Not)
+ Good At
+• Summarizing long technical documents
+• Simplifying complex engineering concepts
+• Extracting information from large datasets
+• Helping write reports, code, and 
+documentation
+ NOT Good At
+• Can hallucinate facts
+• Not deterministic like circuits
+• Must be validated in safety-critical domains
+• Need grounding (RAG) for accuracy
+Real-World Example: Elisa Stadium Network
+A telecom engineer can now say: "Give emergency services the fastest connection right 
+now."
+The LLM-enabled system understands intent and automatically:
+• Prioritizes ambulance communications
+• Throttles video streaming for other users
+• Allocates special network resources dynamically
+Source: University of Oulu White Paper - "Large Language Models in the 6G-Enabled Computing Continuum"
+--- Page 5 ---
+preencoded.png
+TRANSLATION
+Engineering Analogy: LLM Concepts for ICT Pros
+Tokens
+Think: signal samples in a communications system
+Prompt
+Like input control parameters you'd tune
+Hallucination
+Equivalent to noise or unstable output
+Fine-tuning
+Similar to system calibration for domain-specific behavior
+Retrieval (RAG)
+Acts as an external memory module
+--- Page 6 ---
+preencoded.png
+ARCHITECTURE
+From ChatGPT to AI Products
+AI Product = LLM + Engineering System
+1
+Input
+PDF, image, 
+Word, raw 
+text
+2
+Preprocessi
+ng
+OCR, 
+chunking, 
+cleaning
+3
+Retrieval
+Embeddings + 
+vector DB
+4
+LLM Fine-
+Tuning
+Domain 
+specialization
+5
+Agentic AI
+Reasoning + 
+tool use
+6
+Output
+UI + validation 
+layer
+Engineering mindset: Treat the LLM as a component in a larger system. Validation, error handling, and observability are 
+critical.
+--- Page 7 ---
+preencoded.png
+AGENTIC SYSTEMS
+What is Agentic AI?
+Agentic AI = LLM + Tools + Workflow Automation
+Instead of only answering questions, an AI agent can:
+01
+Understand a goal
+02
+Plan steps
+03
+Use tools
+Search, extract, rewrite, execute
+04
+Verify outputs
+05
+Deliver actionable results
+--- Page 8 ---
+preencoded.png
+SPECIALIZATION
+Fine-Tuning: Engineering Perspective
+Fine-Tuning = Specializing an LLM for a Specific Domain
+General LLM (e.g., ChatGPT)
+Trained on broad internet text, knows general knowledge
+Fine-Tuned LLM
+Continues training on specialized data to excel at:
+• Your company's technical documentation
+• Telecom terminology (3GPP, NR, RAN, network slicing)
+• Structured, consistent outputs
+• Compliance decision patterns
+ Critical: Fine-tuning improves consistency, format, and domain behavior  not factual accuracy. Always validate outputs.
+--- Page 9 ---
+preencoded.png
+DEMO #1
+Live Demo: Agentic AI for Cyber Resilience Act (CRA) Compliance
+Use Case: Medical IoT Ring
+01
+Input
+CRA regulation documents + product specs
+02
+Agent Reasoning
+Extract requirements, map to device capabilities
+03
+Gap Analysis
+Identify compliance gaps automatically
+04
+Report Generation
+Structured compliance documentation
+Watch how the agent retrieves, reasons, and validates compliance requirements in real-time
+--- Page 10 ---
+preencoded.png
+DEMO #2
+AI Product Ideation: From Problem to Solution
+Building an AI product isn't about starting with the model, it starts with understanding a real problem and delivering value.
+01
+Identify Real Pain Point
+02
+Define User & Context
+03
+Design Desired User Experience
+04
+Decide What AI Actually Does
+05
+Add Trust & Safety
+06
+Build an MVP
+--- Page 11 ---
+preencoded.png
+AI-Assisted Development Tools
+These tools integrate AI directly into the development workflow, offering real-time assistance to engineers. They leverage LLMs to 
+understand context, generate code, debug, and provide insights, significantly boosting productivity.
+GitHub Copilot
+An AI pair programmer providing 
+code suggestions, completions, and 
+entire function generation directly 
+within your IDE.
+Cursor and Antigravity
+AI-first code editor designed for 
+conversational coding, allowing you 
+to prompt, debug, and refactor code 
+using natural language.
+Perplexity AI
+An AI-powered answer engine that 
+delivers concise summaries and cites 
+sources, serving as a powerful 
+research tool for developers.
+Have you heard the term Vibe Coding?
+--- Page 12 ---
+preencoded.png
+Questions?
+Thank you!

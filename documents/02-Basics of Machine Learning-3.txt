@@ -1,0 +1,545 @@
+
+--- Page 1 ---
+Basics of Machine Learning
+Dariush Salami
+3rd Feb 2026
+Introduction to AI, ML, and LLMs 1
+--- Page 2 ---
+Course schedule
+01 Introduction to AI, ML, and LLMs
+02 Basics of Machine Learning  (Industrial talk)
+03 Data Preprocessing for NLP
+04 Introduction to LLMs and Their Applications
+05 Supervised Learning for NLP Tasks
+06 Advanced NLP Techniques
+07 Language Generation with LLMs
+08 Ethical Considerations and Challenges in LLMs
+09 Model Deployment and Integration in Applications
+10 Final Project and Presentation
+Introduction to AI, ML, and LLMs 2
+--- Page 3 ---
+Let us ask the same question now
+Introduction to AI, ML, and LLMs 3
+What is this object?
+It’s a car!
+--- Page 4 ---
+What is Machine Learning?
+Introduction to AI, ML, and LLMs 4
+Dataset
++ +
+ +
+Extract required patterns
+
+--- Page 5 ---
+Neural language models
+Introduction to AI, ML, and LLMs 5
+ෑ
+𝑖=1
+𝑁
+𝑃 𝑥 𝑡+1 |𝑥 𝑡 , … , 𝑥 𝑖−1
+I have a dog whose name is 
+Lucy. I have two 𝑓(𝜃)
+A differentiable 
+function (e.g. a 
+neural 
+network)
+A distribution over
+the vocabulary
+
+--- Page 6 ---
+Basics of Machine 
+Learning
+Introduction to AI, ML, and LLMs
+6
+--- Page 7 ---
+Three types 
+of machine 
+learning
+• Supervised learning
+• Given data 𝐷 = {(𝒙𝒊, 𝑦𝑖)}𝑖=1
+𝑁 , learn to 
+predict the output 𝑦𝑖 using input 𝒙𝒊.
+• elements of 𝒙𝒊 are called features, 
+attributes, or covariates.
+• 𝑦𝑖 is called the response or label.
+• Unsupervised learning
+• Given only inputs 𝐷 = {𝒙𝒊}𝑖=1
+𝑁  
+(unlabeled data) the goal is to find 
+some “interesting” patterns in the data.
+• Reinforcement learning
+• Broadly: training an agent to take 
+actions that maximize some reward in 
+the long term. For example: training a 
+robot to escape a maze.
+https://uk.mathworks.com/discovery/reinforcement-learning.html
+Introduction to AI, ML, and LLMs 7
+--- Page 8 ---
+Supervised learning
+Introduction to AI, ML, and LLMs 8
+--- Page 9 ---
+Unsupervised learning: Clustering
+Introduction to AI, ML, and LLMs 9
+
+--- Page 10 ---
+Unsupervised learning: Dimensionality reduction
+Introduction to AI, ML, and LLMs 10
+Explain high-dimensional data in a lower-dimensional subspace which 
+captures the "essential" parts of the original data.
+
+--- Page 11 ---
+Data matrix (1/2)
+• Usually (but not always!) rows are individual data points; columns 
+are characteristics of the data points (e.g. measurement, feature, 
+attribute, variable, covariate).
+Introduction to AI, ML, and LLMs 11
+
+--- Page 12 ---
+Data matrix (2/2)
+Introduction to AI, ML, and LLMs 12
+
+--- Page 13 ---
+Feature vector
+• One row of the data matrix, written as a column vector, represents one 
+data point 𝒙𝒊.
+• 𝒙𝒊 is called e.g. a feature vector or a representation.
+• Everything can not be represented as vectors, but a lot of things can.
+• To emphasize that 𝒙𝒊 is a vector, it is often written in bold.
+• We assume the following operations to be familiar: vector addition 𝒙 +
+𝒚, vector inner product 𝒙𝑻𝒚, vector length (norm) 𝒙 , matrix 
+multiplication 𝐴𝒙, matrix addition 𝐴 + 𝐵, matrix product 𝐴𝐵, matrix 
+eigenvalues and eigenvectors 𝐴𝒙 = 𝜆𝒙.
+Introduction to AI, ML, and LLMs 13
+
+--- Page 14 ---
+Histogram (1/2)
+• Histogram is a common way to create features and explore data, 
+by dividing values of a variable in different bins.
+• Height of a box in a histogram is equal to the number of values in 
+the corresponding bin.
+Introduction to AI, ML, and LLMs 14
+
+--- Page 15 ---
+Histogram (2/2)
+• A color histogram of an image shows the number of pixels in each 
+color.
+• Histograms can be used also for text and audio.
+Introduction to AI, ML, and LLMs 15
+
+--- Page 16 ---
+Text Features
+Introduction to AI, ML, and LLMs
+16
+--- Page 17 ---
+Text as a vector
+• A term-document matrix:
+• Rows correspond to text documents, columns corresponds to 
+words, and 𝑥𝑖𝑗 is the number of occurrences of word 𝑗 in 
+document 𝑖.
+• Bag of words feature vector: 𝑥𝑖𝑗 = 1 iff document 𝑖 contains word 
+𝑗.
+Introduction to AI, ML, and LLMs 17
+
+--- Page 18 ---
+Example: student assignments
+• Example: A term-document matrix. Word 
+frequency ≥0 is represented with a black 
+dot.
+• Left-ordered form: columns are ordered 
+according to appearance of words in 
+documents: the first document has more 
+than 200 words, the second document 
+has also roughly 200 words of which 150 
+did not appear in the first, etc.
+• Note: the data include a document which 
+is almost identical to another document. 
+Which one?
+Introduction to AI, ML, and LLMs 18
+--- Page 19 ---
+tf-idf text representation (term frequency – inverse document frequency)
+• The most common words (and, so, ...) can be 
+removed manually.
+• Words are often weighted according to their 
+importance using the inverse document 
+frequency.
+• where w(word) is the weight, df(word) is the 
+document frequency (how many documents have 
+the word) and N is the number of documents.
+• Word frequencies are multiplied by the 
+corresponding weights w.
+• For example, the word ”and” which likely appears 
+in every document gets weight 0.
+Introduction to AI, ML, and LLMs 19
+--- Page 20 ---
+Neural network -based text 
+representations
+• Nowadays, several large neural network 
+models, pre-trained with massive data 
+sets, have been published for Natural 
+Language Processing (NLP).
+• or example, BERT learns a vector 
+representation for a word, sentence, or 
+the whole document.
+Introduction to AI, ML, and LLMs 20
+https://jalammar.github.io/illustrated-bert/
+--- Page 21 ---
+Example: Countries and capitals
+• 2D PCA projection of 1000D word vectors 
+learned using skip-gram neural network 
+model.
+• For example: Madrid - Spain + France = 
+Paris
+Introduction to AI, ML, and LLMs 21
+--- Page 22 ---
+Image Features
+Introduction to AI, ML, and LLMs
+22
+--- Page 23 ---
+Convolution (1/2)
+• Convolution is a generic operation which forms new features as 
+the weighted sum of neighboring pixels.
+• Weights are defined by a kernel (or filter)
+• The output (or feature map) is obtained by multiplying each image patch 
+elementwise with the kernel.
+• A typical kernel size with image data is 3*3.
+Introduction to AI, ML, and LLMs 23
+https://anhreynolds.com/blogs/cnn.html
+--- Page 24 ---
+Convolution (2/2)
+• In practice the 
+elements of the 
+kernel (weights, 
+parameters) are not 
+set by hand but 
+learned from data to 
+result in useful 
+features.
+Introduction to AI, ML, and LLMs 24
+https://en.m.wikipedia.org/wiki/File:2D_Convolution_Animation.gif
+
+--- Page 25 ---
+Convolution, example
+• A model trained to classify images of digits 0,1,...,9.
+• Learned filters and a feature map (after one convolutional
+• layer) for an input image of digit 9.
+Introduction to AI, ML, and LLMs 25
+https://medium.com/dataseries/visualizing-the-feature-maps-and-
+filtersby-convolutional-neural-networks-e1462340518e
+
+--- Page 26 ---
+Convolution for smoothing
+• Convolution can be used to average across neighboring pixels,
+• resulting in a smoothed image.
+Introduction to AI, ML, and LLMs 26
+https://stackoverflow.com/questions/34851259/how-to-make-a-
+smoothkernel-in-convolution-neural-networks-with-mxnet-framework
+
+--- Page 27 ---
+Regression and 
+Classification
+Introduction to AI, ML, and LLMs
+27
+--- Page 28 ---
+Linear Regression
+Introduction to AI, ML, and LLMs 28
+
+--- Page 29 ---
+Linear Regression
+• What do we try to find with linear 
+regression?
+• How do we find proper parameters w0 and 
+w1 ?
+Introduction to AI, ML, and LLMs 29
+--- Page 30 ---
+Linear Regression
+Introduction to AI, ML, and LLMs 30
+
+--- Page 31 ---
+Linear Regression
+• Loss function: estimates quality of current 
+solution
+• It is sometimes called error function or cost 
+function.
+Introduction to AI, ML, and LLMs 31
+
+--- Page 32 ---
+Linear Regression
+Introduction to AI, ML, and LLMs 32
+
+--- Page 33 ---
+Logistic regression
+Introduction to AI, ML, and LLMs 33
+• Classes might be nominal in real-world problems.
+
+--- Page 34 ---
+Logistic regression
+• Classes might be nominal in real-
+world problems.
+• Weather: sunny, rainy
+• Medical: positive diagnosis, 
+negative diagnosis
+• Localization: indoor, outdoor
+• In such case, classification is binary: 
+y ∈ {0, 1}
+• Linear regression: h(x) can be 
+smaller than 0 or greater than 1
+• Logistic regression: 0 ≤ h(x) ≤ 1
+Introduction to AI, ML, and LLMs 34
+--- Page 35 ---
+Logistic regression
+Introduction to AI, ML, and LLMs 35
+
+--- Page 36 ---
+Logistic regression
+Introduction to AI, ML, and LLMs 36
+
+--- Page 37 ---
+Multiclass classification
+• Multi-class: One-versus all:
+• Train classifiers for each class to 
+obtain probability that x belongs to 
+class i:
+• then, choose
+Introduction to AI, ML, and LLMs 37
+
+--- Page 38 ---
+Clustering
+Introduction to AI, ML, and LLMs
+38
+--- Page 39 ---
+Summary supervised classification 
+algorithms
+Introduction to AI, ML, and LLMs 39
+
+--- Page 40 ---
+Unsupervised learning
+Introduction to AI, ML, and LLMs 40
+• Supervised: {(x1,1, x1,2) → y1, (x2,1, x2,2) → y2, . . . , (xn,1, xn,2) → yn}
+• Unsupervised: {(x1,1, x1,2), (x2,1, x2,2), . . . , (xn,1, xn,2)}
+
+--- Page 41 ---
+K-means Algorithm
+• Iteratively find k clusters in the data
+• Init: Randomly choose k points as initial 
+cluster centroids
+• Repeat:
+• Assign data points xi , i ∈ {1..n} to 
+these cluster centroids conditioned 
+on distance: Cj = {xi |cj is nearest 
+centroid to xi}
+• Move cluster centroids to the center 
+weight of the points associated to 
+them
+Introduction to AI, ML, and LLMs 41
+--- Page 42 ---
+Introduction to AI, ML, and LLMs 42
+
+--- Page 43 ---
+Model validation and 
+Selection
+Introduction to AI, ML, and LLMs
+43
+--- Page 44 ---
+Data, data, data, ... 
+or not (?)
+• Use separate data sets
+• Feature selection: Identify meaningful features
+• Training: Train a model with given features
+• Testing: Test a trained model and features
+• Model selection: Find a best model given 
+features
+• Using the same set for multiple purposes 
+may result in biased results
+Introduction to AI, ML, and LLMs 44
+--- Page 45 ---
+Preparation for 
+training and testing
+• Data scarcity: Most data for training, rest for 
+testing
+• Diversity: Use several runs with different data 
+sets
+• Randomness: Avoid deterministic separation 
+of data
+• Correlation: Training and testing data from 
+different sessions where possible
+• Domination: Class-sizes during training should 
+be equal
+Introduction to AI, ML, and LLMs 45
+
+--- Page 46 ---
+Training the model – varying data distributions
+Introduction to AI, ML, and LLMs 46
+• Builds: Multiple distributions in training and testing data
+• Avoid: random generation of training/testing sets from same data 
+→ correlation
+
+--- Page 47 ---
+Training the model on scarce data: 
+Leave-one-out cross-validation
+• n-fold cross-validation where n is the 
+number of sample instances
+• Leave out each instance once; train 
+model on remaining instances
+• Estimate performance on left-out 
+instances (success/failure)
+• Caution: Possible correlation from 
+data sampled in same condition
+Introduction to AI, ML, and LLMs 47
+--- Page 48 ---
+Bias – Variance Tradeoff
+Introduction to AI, ML, and LLMs
+48
+--- Page 49 ---
+Bias - Variance tradeoff
+Introduction to AI, ML, and LLMs 49
+
+--- Page 50 ---
+Bias - Variance tradeoff
+Introduction to AI, ML, and LLMs 50
+• Sample points are created for the function sin(2πx) + N where N is 
+a random noise value.
+
+--- Page 51 ---
+Bias - Variance tradeoff
+Introduction to AI, ML, and LLMs 51
+• We fit the data points into a polynomial function:
+
+--- Page 52 ---
+Bias - Variance tradeoff
+Introduction to AI, ML, and LLMs 52
+• We fit the data points into a polynomial function:
+• This can be obtained by minimizing a loss function which 
+measures the misfit between ℎ 𝑥, 𝑤  and the training data set:
+
+--- Page 53 ---
+Bias - Variance tradeoff
+Introduction to AI, ML, and LLMs 53
+• One problem is the right choice of the dimension M
+• When M is too small, the approximation accuracy might be bad
+
+--- Page 54 ---
+Bias - Variance tradeoff
+Introduction to AI, ML, and LLMs 54
+• Visualize loss L[(X , Y), h(·)] w.r.t. the data by Root of the Mean 
+Squared (RMS)
+
+--- Page 55 ---
+Bias - Variance tradeoff
+Introduction to AI, ML, and LLMs 55
+• Visualize loss L[(X , Y), h(·)] w.r.t. the data by Root of the Mean 
+Squared (RMS)
+
+--- Page 56 ---
+Bias - Variance tradeoff
+Introduction to AI, ML, and LLMs 56
+• Visualize loss L[(X , Y), h(·)] w.r.t. the data by Root of the Mean 
+Squared (RMS)
+
+--- Page 57 ---
+Bias - Variance tradeoff
+Introduction to AI, ML, and LLMs 57
+• Visualize loss L[(X , Y), h(·)] w.r.t. the data by Root of the Mean 
+Squared (RMS)
+
+--- Page 58 ---
+Bias - Variance tradeoff
+Introduction to AI, ML, and LLMs 58
+• Visualize loss L[(X , Y), h(·)] w.r.t. the data by Root of the Mean 
+Squared (RMS)
+
+--- Page 59 ---
+Bias - Variance 
+tradeoff
+• This event is called overfitting
+• The polynomial is now trained too well to the 
+training data
+• It performs badly on test data
+Introduction to AI, ML, and LLMs 59
+--- Page 60 ---
+Bias - Variance tradeoff
+Introduction to AI, ML, and LLMs 60
+• With increasing number of data points, the problem of overfitting
+• becomes less severe for a given value of M.
+
+--- Page 61 ---
+Bias and Variance in training a learning model
+Introduction to AI, ML, and LLMs 61
+• Bias
+• Inability of machine learning model to capture the true distribution of the 
+data
+• Example: Linear model to describe non-linear relationship between data and labels
+• e.g. linear regression is expected to have a high bias error; in contrast to other algorithms that take less 
+hard assumptions (e.g. decision trees, k-Nearest Neighbors, Support Vector Machines)
+• High bias: more assumption in the learning algorithm on the underlying 
+distribution
+• Low bias: fewer assumptions in the learning algorithm
+--- Page 62 ---
+Bias and Variance in training a learning model
+Introduction to AI, ML, and LLMs 62
+• Variance
+• Model overfits on a particular dataset (learning to fit very closely to the 
+points of a particular dataset)
+• Example: Generally, nonlinear machine learning algorithms like decision trees have 
+a high variance
+• Low variance algorithms: Linear regression, logistic regression, linear 
+discriminant analysis
+• High variance algorithms: Decision Trees, k-NN, support vector machines
+--- Page 63 ---
+Model selection
+Introduction to AI, ML, and LLMs 63
+
+--- Page 64 ---
+Learning curves
+Introduction to AI, ML, and LLMs 64
+• Plotting learning curves helps to find out, whether our algorithm 
+suffers from high variance or high bias.
+
+--- Page 65 ---
+Learning curves
+Introduction to AI, ML, and LLMs 65
+
+--- Page 66 ---
+Learning curves
+Introduction to AI, ML, and LLMs 66
+
+--- Page 67 ---
+Evaluation of model 
+performance
+Introduction to AI, ML, and LLMs
+67
+--- Page 68 ---
+Evaluation of model performance
+Introduction to AI, ML, and LLMs 68
+• Classification accuracy
+• Confusion matrices
+• Precision
+• Recall
+• F1-score
+
+--- Page 69 ---
+Evaluation of model performance
+Introduction to AI, ML, and LLMs 69
+Write down the formula!
+--- Page 70 ---
+Evaluation of model performance
+Introduction to AI, ML, and LLMs 70
+
+--- Page 71 ---
+Evaluation of model performance
+Introduction to AI, ML, and LLMs 71
+
+--- Page 72 ---
+Evaluation of model performance
+Introduction to AI, ML, and LLMs 72
+• Tradeoff between precision and recall.
+• Predict a particular class only if very confident ⇒ High precision 
+(minimize false positives)
+• Minimize false negatives ⇒ High recall
+• F1-score combines precision and recall into a single decision 
+variable:
+
+--- Page 73 ---
+Questions?
+dariush.salami@aalto.fi
+Introduction to AI, ML, and LLMs
+73

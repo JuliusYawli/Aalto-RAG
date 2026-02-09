@@ -1,0 +1,514 @@
+
+--- Page 1 ---
+Introduction to AI, ML, and 
+LLMs
+Dariush Salami
+3rd Feb 2026
+Introduction to AI, ML, and LLMs 1
+--- Page 2 ---
+Dariush Salami     داریوش
+•PhD from Aalto University on AI and ML for 
+wireless communication and sensing
+• Postdoctoral researcher at Aalto University
+• Radio research scientist at Nokia Bell Labs
+• Over 10 years of experience in academia and 
+industry
+• Lectured the largest AIML course in Finland 
+with over 1000 attendees
+Introduction to AI, ML, and LLMs 2
+--- Page 3 ---
+Course schedule
+01 Introduction to AI, ML, and LLMs
+02 Basics of Machine Learning (Industrial talk)
+03 Data Preprocessing for NLP
+04 Introduction to LLMs and Their Applications
+05 Supervised Learning for NLP Tasks
+06 Advanced NLP Techniques
+07 Language Generation with LLMs
+08 Ethical Considerations and Challenges in LLMs
+09 Model Deployment and Integration in Applications
+10 Final Project and Presentation
+• Course time: 9-12
+• Grading: fail/pass
+• 3 Credits
+• Location: Maarintie 8 Room 
+1174 TU4
+Introduction to AI, ML, and LLMs 3
+--- Page 4 ---
+I3 Approach
+• Immediate, real-time feedback and deeper engagement 
+with the instructor and peers.
+• Promotes networking, idea exchange, and collaboration 
+beyond the session itself.
+In-person:
+• Encourages questions, exploration, and adaptive pacing 
+based on participant needs.
+• Promotes active learning through live coding, discussions, 
+polls, and group activities.
+Interactive:
+• Bridges theory and practice with real-world use cases, 
+tools, and datasets from industry.
+• Exposes participants to challenges, solutions, and 
+workflows used in production LLM systems.
+Industrial:
+Introduction to AI, ML, and LLMs 4
+--- Page 5 ---
+Interested in reading more?
+Deep Learning
+By Ian Goodfellow, Yoshua 
+Bengio, Aaron Courville
+Artificial Intelligence: A 
+Modern Approach
+By Stuart Russell, Peter Norvig
+Pattern Recognition and 
+Machine Learning
+By Christopher M. Bishop
+Introduction to AI, ML, and LLMs 5
+--- Page 6 ---
+Final project 
+or 
+presentation
+The last session of the course is dedicated to 
+presentations and potential feedback on the projects.
+Presentations:
+• Four presentations in total (20 minutes + 10 minutes QA).
+• Each group two people maximum.
+• Free to choose the topic as long as it’s aligned with the course 
+content.
+• Deadline is the last day of the course.
+Projects:
+• Three to five people per group
+• Four candidate topics
+• Deadline is one week after the course finishes.
+Introduction to AI, ML, and LLMs 6
+--- Page 7 ---
+Why this winter school?
+• To learn the basic concepts in AI/ML and LLMs.
+• To have a theoretical-practical understanding of the LLMs.
+• To get exposed to different technologies in LLMs so that you can 
+dive deeper after the summer school if you find something more 
+interesting.
+• To get start writing simple AI/ML applications using 
+NoCode/LowCode approaches plus using more advanced 
+libraries like LangChain! 
+Introduction to AI, ML, and LLMs 7
+--- Page 8 ---
+Lecture day plan
+• 9:00–9:10
+• Arrival buffer / settling in
+• 9:10–9:30
+• Q.A. and project/presentation check up
+• 9:30–10:30
+• First lecture
+• 10:30–10:45
+• Break
+• 10:45–11:45
+• Second lecture
+• 11:45–12:00
+• Final Q&A & wrap-up
+Introduction to AI, ML, and LLMs 8
+--- Page 9 ---
+Candidate 
+project topics 
+(No-Code, 
+Low-Code)
+• AI Content Assistant with n8n
+• Design a workflow using n8n that 
+automatically generates social media posts 
+from survey responses or meeting notes.
+• Coding Required: None (low-code 
+configuration).
+• A working n8n workflow (hosted or in a local 
+setup).
+• A reflection slide on how LLMs can help 
+automate routine writing tasks.
+• AI Travel Planner App with Flowise
+• Design and build a Flowise app that acts as a 
+travel assistant helping users plan a trip to a 
+city, region, or country of your choice using an 
+LLM + modular logic.
+• Coding Required: Flowise config + light prompt 
+design.
+• A working Flowise app (hosted or demoed live / 
+video walkthrough).
+• A reflection slide on app purpose and features 
+as well as the Flowise architecture.
+Introduction to AI, ML, and LLMs 9
+--- Page 10 ---
+Candidate 
+project topics 
+(Intermediate, 
+Advanced)
+• AI Policy Advisor: Multi-Agent LLM System for 
+Drafting Ethical AI Guidelines
+• Develop a multi-agent system (using LangChain, 
+CrewAI, or LangGraph) where AI “experts” 
+collaborate to draft a simple, high-level policy 
+document on responsible AI use in a domain (e.g., 
+education, healthcare, smart cities).
+• Coding Required: Intermediate (Python + 
+LangChain/CrewAI basics + agent configuration).
+• A runnable Python script or Colab notebook.
+• A short draft (e.g., “5 principles for safe AI in smart 
+cities”) produced collaboratively by the agents.
+• RAG Application for Domain-Specific Question 
+Answering
+• Create a Retrieval-Augmented Generation (RAG) 
+system that answers user questions based on 
+custom documents (e.g., company manuals, 
+scientific papers, product specs).
+• Coding Required: Medium to high (Python, 
+LangChain, basic vector database setup)
+• A working RAG app (Python script or Colab 
+notebook).
+Introduction to AI, ML, and LLMs 10
+--- Page 11 ---
+Course schedule
+01 Introduction to AI, ML, and LLMs
+02 Basics of Machine Learning
+03 Data Preprocessing for NLP
+04 Introduction to LLMs and Their Applications (Industrial talk)
+05 Supervised Learning for NLP Tasks
+06 Advanced NLP Techniques
+07 Language Generation with LLMs
+08 Ethical Considerations and Challenges in LLMs
+09 Model Deployment and Integration in Applications
+10 Final Project and Presentation
+Introduction to AI, ML, and LLMs 11
+--- Page 12 ---
+What are Artificial 
+Intelligence and 
+Machine Learning?
+Introduction to AI, ML, and LLMs 12
+--- Page 13 ---
+Introduction to AI, ML, and LLMs 13
+
+--- Page 14 ---
+Introduction to AI, ML, and LLMs 14
+--- Page 15 ---
+A Brief History of 
+AI
+• The idea of intelligent machines appears in 
+ancient myths and early automata (e.g., 
+mechanical statues, clockwork devices).
+• 1940s–50s: Foundations laid with work on 
+cybernetics, formal logic, and early computers.
+• 1956: The term Artificial Intelligence was 
+coined at the Dartmouth Conference, organized 
+by John McCarthy.
+• The Dartmouth Conference is considered the 
+official birth of AI as a field of study.
+• Early AI programs (1950s–60s) tackled tasks like 
+playing chess, solving algebra, and proving 
+theorems.
+• Periods of rapid progress alternated with AI 
+winters — times of reduced funding and 
+interest.
+Introduction to AI, ML, and LLMs 15
+--- Page 16 ---
+Introduction to AI, ML, and LLMs 16
+
+--- Page 17 ---
+Human can learn from past experience and 
+make decision of its own.
+Introduction to AI, ML, and LLMs 17
+What is this object?
+It’s a car!
+--- Page 18 ---
+Let us ask the same question to a 
+neanderthal…
+Introduction to AI, ML, and LLMs 18
+What is this object?
+However, he is a human being.
+He can observe and learn if we
+show him pictures of cars!
+--- Page 19 ---
+Let us teach him by showing pictures of 
+different cars
+Introduction to AI, ML, and LLMs 19
+
+--- Page 20 ---
+Let us ask the same question now
+Introduction to AI, ML, and LLMs 20
+What is this object?
+It’s a car!
+--- Page 21 ---
+AI, ML, NN, and DL!
+Introduction to AI, ML, and LLMs 21
+https://www.qlik.com/us/augmented-analytics/machine-learning-vs-ai
+--- Page 22 ---
+What about a Machine ?
+Introduction to AI, ML, and LLMs 22
+Machines follow instructions
+[ It can not take decision of its own]
+--- Page 23 ---
+What about a Machine ?
+Introduction to AI, ML, and LLMs 23
+We can ask a machine
+• To perform an arithmetic operations such as
+• Addition
+• Multiplication
+• Division
+• Comparison
+• Print
+• Plot a chart
+--- Page 24 ---
+What is Machine Learning?
+Introduction to AI, ML, and LLMs 24
+We want a machine to act like a human.
+Detect 
+objects
+Predict 
+values 
+Learn our 
+language
+Recognize 
+faces
+Pretty much the learning process is the 
+same! We need to provide experience to 
+the machine!
+--- Page 25 ---
+What is Machine Learning?
+Introduction to AI, ML, and LLMs 25
+Data or Training Dataset
++
+So, we first need to provide
+training dataset to the
+machine.
+--- Page 26 ---
+What is Machine Learning?
+Introduction to AI, ML, and LLMs 26
+Dataset
++ +
+Then, develop algorithms and 
+execute programs on the data 
+w.r.t the desired tasks.
+--- Page 27 ---
+What is Machine Learning?
+Introduction to AI, ML, and LLMs 27
+Dataset
++ +
+ +
+Identify required rules
+--- Page 28 ---
+What is Machine Learning?
+Introduction to AI, ML, and LLMs 28
+Dataset
++ +
+ +
+Extract required patterns
+
+--- Page 29 ---
+What is Machine Learning?
+Introduction to AI, ML, and LLMs 29
+Dataset
++ +
+ +
+Extract required patterns
+
+--- Page 30 ---
+In summary, what is machine learning?
+Introduction to AI, ML, and LLMs 30
++ +
+ +
+ + Decision
+Given a machine learning problem
+• Identify and create the appropriate dataset
+• Perform computation to learn
+• Required rules, pattern and relations
+• Output the decision
+--- Page 31 ---
+
+--- Page 32 ---
+Introduction to AI, ML, and LLMs 32
+
+--- Page 33 ---
+What are Large 
+Language Models 
+(LLMs)?
+Introduction to AI, ML, and LLMs 33
+--- Page 34 ---
+Introduction to AI, ML, and LLMs 34
+
+--- Page 35 ---
+Turing predicted by 2000 a 
+machine would be able to fool 
+an average person to believe 
+that it’s a real human!
+Try it yourself: https://turingtest.live/
+A human evaluator interacts (via 
+text) with both a machine and a 
+human.
+The evaluator’s task: decide which is 
+the machine and which is the 
+human.
+A machine passes the test if the 
+evaluator cannot reliably tell them 
+apart.
+Focuses on behavior, not inner 
+workings, can the machine imitate 
+human responses convincingly?
+Introduction to AI, ML, and LLMs 35
+--- Page 36 ---
+Rank these 
+sentences in 
+the order of 
+plausibility?
+1. Dog ball the chased the.
+2. The chased dog the ball.
+3. The dog chase the ball.
+4. The dog chased the ball.
+5. The ball chased the dog.
+6. The dog chased a sky.
+Introduction to AI, ML, and LLMs 36
+--- Page 37 ---
+Introduction to AI, ML, and LLMs 37
+--- Page 38 ---
+The language modeling problem
+p(how are you this evening ? has your house ever been burgled?) = 10-15
+p(how are you this evening ? fine , thanks , how about you?) = 10-9
+Introduction to AI, ML, and LLMs 38
+
+--- Page 39 ---
+Complete this 
+sentence: Finland is 
+_______.
+Introduction to AI, ML, and LLMs 39
+--- Page 40 ---
+Introduction to AI, ML, and LLMs 40
+
+--- Page 41 ---
+The language modeling problem
+Introduction to AI, ML, and LLMs 41
+Finland is _________. 
+beautiful
+warm
+cold
+duck
+[the rest of the vocabulary.]
+
+--- Page 42 ---
+At each timestep, sample a token from the language model’s new probability 
+distribution over next tokens. In short, predicting which word comes next.
+Language models of this form can generate 
+text
+Introduction to AI, ML, and LLMs 42
+Finland is a _________. 
+beautiful
+warm
+cold
+duck
+[the rest of the vocabulary.]
+Finland _________. 
+Finland is _________. 
+--- Page 43 ---
+Language models are
+• ”She loves it” or
+• ”She love it”a grammatical judge
+• ”The boy crossed the street” or
+• ”The TV crossed the street”
+a semantic plausibility 
+judge
+• ”A: How are you? B: Thanks, I’m ok, how about you?” or
+• “A: How are you? B: Have you ever been to France?”a consistency judge
+• ”Tehran is the capital of Iran. ”a knowledge repository 
+(Very difficult to guarantee!)
+Introduction to AI, ML, and LLMs 43
+--- Page 44 ---
+We use language models in daily basis!
+Introduction to AI, ML, and LLMs 44
+
+--- Page 45 ---
+How do we learn 
+a language 
+model?
+• Estimate probabilities using text data
+• Collect a textual corpus
+• Find a distribution that maximizes the probability of the corpus 
+(maximum likelihood estimation).
+• A naive solution: count and divide
+• Assume we have N training sentences
+• Let x1, x2, ..., xn be a sentence, and c(x1, x2, ..., xn) be the number 
+of times it appeared in the training data.
+• Define a language model:
+Introduction to AI, ML, and LLMs 45
+--- Page 46 ---
+Markov assumption
+• We make the Markov assumption: x(t+1) depends only on the 
+preceding n-1 words
+𝑃 𝑥 𝑡+1 |𝑥 𝑡 , … , 𝑥 1 = 𝑃 𝑥 𝑡+1 |𝑥 𝑡 , … , 𝑥 𝑡−𝑛+2
+Introduction to AI, ML, and LLMs 46
+n-1 words
+
+--- Page 47 ---
+n-gram Language Models
+Introduction to AI, ML, and LLMs 47
+ෑ
+𝑖=1
+𝑁
+𝑃 𝑥 𝑡+1 |𝑥 𝑡 , … , 𝑥 𝑖−1
+• Definition: An n-gram model predicts the next word based on the 
+previous (n-1) words.
+• Example sentence: "I have a dog whose name is Lucy. I have two 
+cats, they like playing with Lucy. "
+• Key concept: Collect statistics on n-gram frequencies to predict 
+the next word
+• Process:
+• Step 1: Identify sequences of n words (n-grams) in the text
+• Step 2: Calculate the probability of each n-gram
+• Step 3: Use probabilities to predict the next word
+--- Page 48 ---
+Unigram probability
+Introduction to AI, ML, and LLMs 48
+• “I have a dog whose name is Lucy. I have two cats, they like 
+playing with Lucy. ”
+• corpus size m = 17
+• P(Lucy) = 2/17; P(cats) = 1/17
+• Unigram probability:
+
+--- Page 49 ---
+Bigram probability
+Introduction to AI, ML, and LLMs 49
+• “I have a dog whose name is Lucy. I have two cats, they like 
+playing with Lucy.”
+
+--- Page 50 ---
+n-gram probability
+Introduction to AI, ML, and LLMs 50
+• “I have a dog whose name is Lucy. I have two cats, they like 
+playing with Lucy. ”
+
+--- Page 51 ---
+Neural language models
+Introduction to AI, ML, and LLMs 51
+ෑ
+𝑖=1
+𝑁
+𝑃 𝑥 𝑡+1 |𝑥 𝑡 , … , 𝑥 𝑖−1
+I have a dog whose name is 
+Lucy. I have two 𝑓(𝜃)
+A differentiable 
+function (e.g. a 
+neural 
+network)
+A distribution over
+the vocabulary
+
+--- Page 52 ---
+Quiz time: 
+what is my 
+name in 
+Persian?
+درویش
+داریوش
+نمیدانم
+هیچکدام
+Introduction to AI, ML, and LLMs 52
+--- Page 53 ---
+Introduction to AI, ML, and LLMs 53
+
+--- Page 54 ---
+Questions?
+dariush.salami@aalto.fi
+Introduction to AI, ML, and LLMs
+54

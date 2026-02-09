@@ -1,0 +1,585 @@
+
+--- Page 1 ---
+Data Preprocessing for NLP
+Dariush Salami
+4th Feb 2025
+Introduction to AI, ML, and LLMs 1
+--- Page 2 ---
+Summary supervised classification 
+algorithms
+Introduction to AI, ML, and LLMs 2
+
+--- Page 3 ---
+K-means Algorithm
+• Iteratively find k clusters in the data
+• Init: Randomly choose k points as initial 
+cluster centroids
+• Repeat:
+• Assign data points xi , i ∈ {1..n} to 
+these cluster centroids conditioned 
+on distance: Cj = {xi |cj is nearest 
+centroid to xi}
+• Move cluster centroids to the center 
+weight of the points associated to 
+them
+Introduction to AI, ML, and LLMs 3
+--- Page 4 ---
+Model selection
+Introduction to AI, ML, and LLMs 4
+
+--- Page 5 ---
+Evaluation of model performance
+Introduction to AI, ML, and LLMs 5
+
+--- Page 6 ---
+Course schedule
+01 Introduction to AI, ML, and LLMs
+02 Basics of Machine Learning (Industrial talk)
+03 Data Preprocessing for NLP
+04 Introduction to LLMs and Their Applications
+05 Supervised Learning for NLP Tasks
+06 Advanced NLP Techniques
+07 Language Generation with LLMs
+08 Ethical Considerations and Challenges in LLMs
+09 Model Deployment and Integration in Applications
+10 Final Project and Presentation
+Introduction to AI, ML, and LLMs 6
+--- Page 7 ---
+Text Preprocessing 
+Toolkits
+Introduction to AI, ML, and LLMs
+7
+--- Page 8 ---
+Tools for Natural 
+Language 
+Processing 
+(NLP) (1/3)
+1. Gensim
+• Fast, scalable Python library for topic modeling
+• Recognizes text similarities, indexes documents
+• Handles huge data volumes
+2. SpaCy
+• Modern, fast NLP library with good documentation
+• Supports large datasets, pre-trained models
+• Great for preparing text for deep learning
+3. IBM Watson
+• Cloud-based AI services for NLP
+• Performs keyword, emotion, and category detection
+• Used across industries like finance, healthcare
+Introduction to AI, ML, and LLMs 8
+--- Page 9 ---
+Tools for Natural 
+Language 
+Processing 
+(NLP) (2/3)
+4. MonkeyLearn
+• No-code NLP platform with pre-trained models
+• Topic classification, sentiment, keyword extraction
+• Integrates with Excel, Google Sheets
+5. TextBlob
+• Beginner-friendly Python library (built on NLTK)
+• Easy part-of-speech tagging, classification, sentiment
+• Simple interface for newcomers to NLP
+6. Stanford CoreNLP
+• Java library for advanced NLP tasks
+• Supports tokenization, NER, POS tagging
+• Scalable, optimized for complex tasks
+Introduction to AI, ML, and LLMs 9
+--- Page 10 ---
+Tools for Natural 
+Language 
+Processing 
+(NLP) (3/3)
+7. Google Cloud Natural Language API
+• Pre-trained models for sentiment, entity, content analysis
+• Includes question answering and language understanding
+• Part of Google Cloud platform
+8. NLTK
+• Classic Python NLP toolkit with 50+ resources
+• Popular among students, educators, researchers
+• Free, open-source, with strong community support
+Introduction to AI, ML, and LLMs 10
+--- Page 11 ---
+Basics of NLTK
+Introduction to AI, ML, and LLMs
+11
+--- Page 12 ---
+Top-Level Organization of NLTK
+• Organized as a flat hierarchy of packages 
+and modules
+• Each module provides the tools 
+necessary to address a specific task
+• Modules has two types of classes
+• Data-oriented classes: used to 
+represent information relevant to 
+natural language processing.
+• Task-oriented classes: encapsulate 
+the resources and methods needed 
+to perform a specific task.
+Introduction to AI, ML, and LLMs 12
+--- Page 13 ---
+Modules
+• Token: process individual elements i.e. words 
+and sentences
+• Probability: process probabilistic information
+• Tree: process hierarchical information over text
+• Cfg: process context free grammars
+• Tagger: tag each word with a POE
+• Parser: build trees over text
+• Classifier: classify text into categories
+• Draw: visualize NLP structures and processes
+• Corpus: access tagged corpus data
+Introduction to AI, ML, and LLMs 13
+--- Page 14 ---
+Tokenization, stemming, 
+and lemmatization
+Introduction to AI, ML, and LLMs
+14
+--- Page 15 ---
+Tokenization
+Introduction to AI, ML, and LLMs 15
+Simplest way to represent 
+a text is with a single 
+string.
+Difficult to process text in 
+this format.
+Convenient to work with a 
+list of tokens.
+Task of converting a text 
+from a single string to a 
+list of tokens is known as 
+tokenization.
+The most basic natural 
+language processing 
+technique.
+Example – Word 
+Tokenization
+• Input: ”Hello, How are you all?”
+• Output: “Hello” , “How” , “are” , 
+“you” , “all?”
+--- Page 16 ---
+Tokens and Types
+• The term word can be used in two different ways
+• To refer to an individual occurrence of a word
+• To refer to an abstract vocabulary item
+• For example, the sentence “my dog likes his dog” contains five 
+occurrences of words, but four vocabulary items.
+• To avoid confusion, use more precise terminology
+• Word token - an occurrence of a word
+• Word type – a vocabulary item
+• Tokens constructed from their types using the Token constructor
+• Token member functions – type and loc
+Introduction to AI, ML, and LLMs 16
+--- Page 17 ---
+Corpuses
+Introduction to AI, ML, and LLMs
+17
+Gutenberg: selection of e-books
+Webtext: forum discussions, reviews, movie scripts
+nps_chat: anonymized chats
+Brows: 1m word corpus, categorized by genre
+Reuters: news corpus
+Inaugural: inaugural addresses of presidents
+Udhr: multilingual corpus
+• Large collection of text
+• Concentrating on a topic or 
+open domain
+• May be raw text or 
+annotated
+--- Page 18 ---
+Accessing corpora
+Introduction to AI, ML, and LLMs 18
+Importing and downloading
+the Guternberg corpora
+Getting the raw text of a corpus and
+printing the first 100 characters of it
+Getting words and sentences
+from a corpora
+--- Page 19 ---
+Sentence and word tokenization
+Introduction to AI, ML, and LLMs 19
+Tokenize raw text in sentence level
+Tokenize raw text in word level
+
+--- Page 20 ---
+Stemming
+• Reducing a word to its root form (stem) by chopping off prefixes or 
+suffixes.
+• Stemming doesn’t always produce valid words — it’s rule-based and 
+often crude.
+• Example:
+• running → run
+• flies → fli (can be imperfect)
+Introduction to AI, ML, and LLMs 20
+--- Page 21 ---
+Lemmatization
+• Reducing a word to its base dictionary form (lemma), using linguistic 
+knowledge (e.g. part of speech, grammar).
+• Gets valid base words that exist in the language.
+• Example:
+• running → run
+• flies → fly
+• better → good
+Introduction to AI, ML, and LLMs 21
+--- Page 22 ---
+Part Of Speech Tagging 
+(POS)
+Introduction to AI, ML, and LLMs
+22
+--- Page 23 ---
+Part Of Speech Tagging (POS)
+Introduction to AI, ML, and LLMs 23
+• Process of classifying words into their parts of speech and 
+labelling them accordingly
+• Classes such as nouns, verbs, adjectives, and adverbs
+• Parts of speech are also known as word classes or lexical 
+categories
+• The collection of tags used for a particular task is known as a 
+tagset
+--- Page 24 ---
+Tagging methods
+Introduction to AI, ML, and LLMs 24
+• Default tagger
+• Regular expression tagger
+• Unigram tagger
+• N-gram tagger
+
+--- Page 25 ---
+Unigram and N-
+gram tagging
+• Unigram tagging – nltk.UnigramTagging()
+• Assign the tag that is most likely for that 
+particular token
+• N-gram tagging
+• Context is the current word together with the 
+part-of-speech
+• Tags of the n-1 preceding tokens
+Introduction to AI, ML, and LLMs 25
+--- Page 26 ---
+Preprocessing Techniques
+Introduction to AI, ML, and LLMs
+26
+--- Page 27 ---
+Preprocessing: Remove Characters
+Introduction to AI, ML, and LLMs
+27
+How can we normalize this text?
+Remove punctuation Remove capital letters and 
+make all letters lowercase Remove numbers
+Hi Mr. Smith! I’m going to buy some vegetables (tomatoes and 
+cucumbers) from the store. Should I pick up 2lbs of black-eyed 
+peas as well?
+--- Page 28 ---
+Remove punctuation
+Introduction to AI, ML, and LLMs 28
+'Hi Mr Smith I’m going to buy some vegetables tomatoes and cucumbers
+from the store Should I pick up 2lbs of blackeyed peas as well'
+
+--- Page 29 ---
+Make all text lowercase
+Introduction to AI, ML, and LLMs 29
+’hi mr smith i’m going to buy some vegetables tomatoes and cucumbers
+from the store should i pick up 2lbs of blackeyed peas as well'
+
+--- Page 30 ---
+Remove numbers
+Introduction to AI, ML, and LLMs 30
+'hi mr smith i’m going to buy some vegetables tomatoes and cucumbers 
+from the store should i pick up of blackeyed peas as well'
+
+--- Page 31 ---
+Remove stop 
+words
+Introduction to AI, ML, and LLMs
+31
+Hi Mr. Smith! I’m going to buy some vegetables 
+(tomatoes and cucumbers) from the store. 
+Should I pick up 2lbs of black-eyed peas as 
+well?
+What is the most frequent term in the text? Is 
+that information useful?
+Stop words are words that have very little 
+semantic value (think of tf-idf).
+--- Page 32 ---
+Remove stop words using scikit-learn
+Introduction to AI, ML, and LLMs 32
+
+--- Page 33 ---
+Introduction to AI, ML, and LLMs 33
+
+--- Page 34 ---
+Introduction to Neural 
+Networks
+Introduction to AI, ML, and LLMs
+75
+--- Page 35 ---
+Traditional shallow classification pipeline
+Introduction to AI, ML, and LLMs 76
+Crafted Features
+Raw 
+Data3
+Raw 
+Data2
+Raw 
+Data1
+Feature 
+representation
+Trainable 
+classifier Class label
+--- Page 36 ---
+Deep classification pipeline
+Introduction to AI, ML, and LLMs 77
+Raw Data Layer 1 Layer 2 Layer 3 Classifier
+• Learn a feature hierarchy from raw data to classifier.
+• Each layer extracts features from the output of previous layer.
+• Train all layers jointly.
+--- Page 37 ---
+Linear classifiers revisited: Perceptron
+Introduction to AI, ML, and LLMs 78
+--- Page 38 ---
+79
+--- Page 39 ---
+Multi-layer perceptrons
+• To make nonlinear classifiers out of 
+perceptrons, build a multi-layer neural 
+network!
+• This requires each perceptron to 
+have a nonlinearity.
+• To be trainable, the nonlinearity 
+should be differentiable
+Introduction to AI, ML, and LLMs 80
+
+--- Page 40 ---
+Training of multi-layer networks
+Introduction to AI, ML, and LLMs 81
+• Find network weights to minimize the prediction loss between true 
+and estimated labels of training examples:
+• Possible losses for binary problems:
+• Quadratic loss:
+• Log likelihood loss:  
+• Hinge loss: 
+
+--- Page 41 ---
+Training of multi-layer networks
+Introduction to AI, ML, and LLMs 82
+• Find network weights to minimize the prediction loss between true 
+and estimated labels of training examples:
+• Update weights by gradient descent: 
+
+--- Page 42 ---
+Training of multi-layer networks
+Introduction to AI, ML, and LLMs 83
+• Find network weights to minimize the prediction loss between true and 
+estimated labels of training examples:
+• Update weights by gradient descent:
+• Back-propagation: gradients are computed in the direction from 
+output to input layers and combined using chain rule.
+• Stochastic gradient descent: compute the weight update w.r.t. one 
+training example (or a small batch of examples) at a time, cycle through 
+training examples in random order in multiple epochs. 
+
+--- Page 43 ---
+Back-propagation
+Introduction to AI, ML, and LLMs 84
+Computing the gradient of the loss
+--- Page 44 ---
+Gradient Computation
+Introduction to AI, ML, and LLMs 85
+f1 f2 f3 f4 f5x
+w1 w2 w3 w4 w5
+z5=zz4z3z2z1
+--- Page 45 ---
+Gradient Computation
+Introduction to AI, ML, and LLMs 86
+f1 f2 f3 f4 f5
+x
+w1 w2 w3 w4 w5
+z5=zz4z3z2z1
+--- Page 46 ---
+Gradient Computation
+Introduction to AI, ML, and LLMs 87
+f1 f2 f3 f4 f5
+x
+w1 w2 w3 w4 w5
+z5=zz4z3z2z1
+
+--- Page 47 ---
+Gradient Computation
+Introduction to AI, ML, and LLMs 88
+f1 f2 f3 f4 f5
+x
+w1 w2 w3 w4 w5
+z5=zz4z3z2z1
+
+--- Page 48 ---
+Gradient Computation
+Introduction to AI, ML, and LLMs 89
+f1 f2 f3 f4 f5
+x
+w1 w2 w3 w4 w5
+z5=zz4z3z2z1
+
+--- Page 49 ---
+Gradient Computation
+Introduction to AI, ML, and LLMs 90
+f1 f2 f3 f4 f5
+x
+w1 w2 w3 w4 w5
+z5=zz4z3z2z1
+
+--- Page 50 ---
+Gradient Computation
+Introduction to AI, ML, and LLMs 91
+f1 f2 f3 f4 f5
+x
+w1 w2 w3 w4 w5
+z5=zz4z3z2z1
+
+--- Page 51 ---
+Gradient Computation
+Introduction to AI, ML, and LLMs 92
+f1 f2 f3 f4 f5
+x
+w1 w2 w3 w4 w5
+z5=zz4z3z2z1
+
+--- Page 52 ---
+Gradient Computation
+Introduction to AI, ML, and LLMs 93
+f1 f2 f3 f4 f5
+x
+w1 w2 w3 w4 w5
+z5=zz4z3z2z1
+
+--- Page 53 ---
+Gradient Computation
+Introduction to AI, ML, and LLMs 94
+f1 f2 f3 f4 f5
+x
+w1 w2 w3 w4 w5
+z5=zz4z3z2z1
+
+--- Page 54 ---
+Gradient Computation
+Introduction to AI, ML, and LLMs 95
+f1 f2 f3 f4 f5
+x
+w1 w2 w3 w4 w5
+z5=zz4z3z2z1
+
+--- Page 55 ---
+Gradient Computation
+Introduction to AI, ML, and LLMs 96
+f1 f2 f3 f4 f5
+x
+w1 w2 w3 w4 w5
+z5=zz4z3z2z1
+
+--- Page 56 ---
+Gradient Computation
+Introduction to AI, ML, and LLMs 97
+f1 f2 f3 f4 f5
+x
+w1 w2 w3 w4 w5
+z5=zz4z3z2z1
+
+--- Page 57 ---
+Gradient Computation
+Introduction to AI, ML, and LLMs 98
+f1 f2 f3 f4 f5
+x
+w1 w2 w3 w4 w5
+z5=zz4z3z2z1
+Recurrence going
+Backward!
+--- Page 58 ---
+Gradient Computation
+Introduction to AI, ML, and LLMs 99
+f1 f2 f3 f4 f5x
+w1 w2 w3 w4 w5
+z5=zz4z3z2z1
+Back-Propagation
+--- Page 59 ---
+Backpropagation for a sequence of functions
+Introduction to AI, ML, and LLMs 100
+• Each “function” has a “forward” and “backward” module.
+• Forward module for fi
+• Takes zi-1 and weight wi as input
+• Produces zi as output
+• Backward module for fi
+• Takes g(zi) as input
+• Produces g(zi-1) and g(wi) as output
+
+--- Page 60 ---
+Computation graph - Functions
+Introduction to AI, ML, and LLMs 101
+• Each node implements two functions
+• A “forward”
+• Computes output given input
+• A “backward”
+• Computes derivative of z w.r.t input, given derivative of z w.r.t output
+--- Page 61 ---
+Computation graph
+Introduction to AI, ML, and LLMs 102
+
+--- Page 62 ---
+Network with a single hidden layer
+Introduction to AI, ML, and LLMs 103
+• Neural networks with at least one hidden layer are universal 
+function approximators.
+
+--- Page 63 ---
+Network with a single hidden layer
+Introduction to AI, ML, and LLMs 104
+• Hidden layer size and network capacity:
+https://cs231n.github.io/neural-networks-1/
+
+--- Page 64 ---
+Regularization
+Introduction to AI, ML, and LLMs 105
+• It is common to add a penalty (e.g., quadratic) on weight 
+magnitudes to the objective function:
+• Quadratic penalty encourages network to use all of its inputs “a little” 
+rather than a few inputs “a lot”
+
+--- Page 65 ---
+Quiz time: TensorFlow playground
+http://playground.tensorflow.org/
+Why when there’s only one neuron in the first hidden layer, the 
+output is always a linear function? No matter the other hidden 
+layers!
+Introduction to AI, ML, and LLMs 106
+--- Page 66 ---
+Dealing with multiple classes
+• If we need to classify inputs into C different classes, we put C 
+units in the last layer to produce C one-vs.-others scores 𝑓1, 𝑓2,… 
+𝑓c.
+• Apply softmax function to convert these scores to probabilities:
+• If one of the inputs is much larger than the others, then the corresponding 
+softmax value will be close to 1 and others will be close to 0.
+• Use log likelihood (cross-entropy) loss:
+Introduction to AI, ML, and LLMs 107
+
+--- Page 67 ---
+Neural 
+networks: 
+Pros and 
+cons
+Introduction to AI, ML, and LLMs 108
+• Flexible and general function approximation 
+framework
+• Can build extremely powerful models by adding 
+more layers
+Pros
+• Hard to analyze theoretically (e.g., training is 
+prone to local optima)
+• Huge amount of training data, computing power 
+may be required to get good performance
+• The space of implementation choices is huge 
+(network architectures, parameters)
+Cons
+--- Page 68 ---
+Questions?
+dariush.salami@aalto.fi
+Introduction to AI, ML, and LLMs
+109
