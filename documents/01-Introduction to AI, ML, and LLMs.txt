@@ -512,3 +512,17 @@ Questions?
 dariush.salami@aalto.fi
 Introduction to AI, ML, and LLMs
 54
+
+===== COURSE INSTRUCTOR =====
+
+Q: What is the name of the lecturer?
+A: The name of the lecturer is Dariush Salami.
+
+Q: Who teaches this AI, ML, and LLMs course?
+A: Dariush Salami is the instructor for this course.
+
+Q: What is Dariush Salami's background?
+A: Dariush Salami has a PhD from Aalto University on AI and ML for wireless communication and sensing. He is a Postdoctoral researcher at Aalto University, a Radio research scientist at Nokia Bell Labs, and has over 10 years of experience in academia and industry. He has lectured the largest AIML course in Finland with over 1000 attendees.
+
+Q: What is the lecturer's email?
+A: dariush.salami@aalto.fi
