@@ -7,8 +7,7 @@ from typing import List
 from langchain_community.document_loaders import (
     TextLoader,
     PyPDFLoader,
-    Docx2txtLoader,
-    DirectoryLoader
+    Docx2txtLoader
 )
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.schema import Document
@@ -76,34 +75,19 @@ class DocumentLoader:
             print(f"Directory not found: {directory_path}")
             return []
         
-        all_documents = []
+        all_chunks = []
         
-        # Load text files
-        try:
-            text_loader = DirectoryLoader(
-                directory_path,
-                glob="**/*.txt",
-                loader_cls=TextLoader,
-                show_progress=True
-            )
-            all_documents.extend(text_loader.load())
-        except Exception as e:
-            print(f"Error loading text files: {str(e)}")
-        
-        # Load PDF files
+        # Load and process all supported file types
         for filename in os.listdir(directory_path):
-            if filename.endswith('.pdf'):
-                file_path = os.path.join(directory_path, filename)
-                all_documents.extend(self.load_document(file_path))
+            file_path = os.path.join(directory_path, filename)
+            
+            # Skip directories
+            if os.path.isdir(file_path):
+                continue
+            
+            # Process supported file types
+            if filename.endswith(('.txt', '.pdf', '.docx')):
+                chunks = self.load_document(file_path)
+                all_chunks.extend(chunks)
         
-        # Load DOCX files
-        for filename in os.listdir(directory_path):
-            if filename.endswith('.docx'):
-                file_path = os.path.join(directory_path, filename)
-                all_documents.extend(self.load_document(file_path))
-        
-        # Split documents into chunks
-        if all_documents:
-            return self.text_splitter.split_documents(all_documents)
-        
-        return []
+        return all_chunks
