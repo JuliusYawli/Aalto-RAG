@@ -291,6 +291,130 @@ The system uses ChromaDB by default, but you can swap it for others:
 - **Embedding Model**: Better models = better retrieval accuracy
 - **LLM Model**: GPT-4 provides better answers but costs more than GPT-3.5
 
+## 💬 Questions You Can Ask in the App
+
+This is a comprehensive list of all questions you can ask the RAG system. These questions cover the course material across AI/ML, NLP, LLMs, and RAG systems.
+
+### AI & ML Fundamentals
+
+1. What is Artificial Intelligence?
+2. What is Machine Learning?
+3. What is the difference between AI, ML, and Deep Learning?
+4. What are supervised learning and unsupervised learning?
+5. What is reinforcement learning?
+6. What are the main challenges in AI?
+7. How does machine learning differ from traditional programming?
+8. What are some real-world applications of AI?
+9. What is the importance of data in machine learning?
+10. What are the main machine learning paradigms?
+
+### Machine Learning Basics
+
+1. What is a training set and a test set?
+2. What is overfitting and underfitting?
+3. What is cross-validation and why is it important?
+4. What are hyperparameters?
+5. What is feature scaling and why is it necessary?
+6. What is the bias-variance tradeoff?
+7. What are different types of machine learning algorithms?
+
+### Machine Learning Best Practices
+
+1. What are the best practices for feature engineering?
+2. How should you approach data preprocessing?
+3. What is the importance of exploratory data analysis?
+4. How do you handle missing values in datasets?
+5. What strategies help prevent overfitting?
+6. How do you evaluate model performance?
+7. What is the importance of model interpretability?
+
+### Data Preprocessing for NLP
+
+1. What is tokenization?
+2. What is stemming and lemmatization?
+3. What is stop word removal?
+4. What is vectorization in NLP?
+5. What is TF-IDF?
+6. What are n-grams?
+7. What is word embeddings?
+8. How do you handle text normalization?
+9. What is the importance of data cleaning in NLP?
+10. What techniques are used for handling imbalanced datasets in NLP?
+
+### NLP Techniques
+
+1. What is Named Entity Recognition (NER)?
+2. What is Part-of-Speech (POS) tagging?
+3. What is sentiment analysis?
+4. What is machine translation?
+5. What is text classification?
+6. What are the main NLP tasks?
+
+### Supervised Learning for NLP Tasks
+
+1. What is Naive Bayes and how is it used in NLP?
+2. What is Support Vector Machines (SVM)?
+3. What is logistic regression?
+4. What are decision trees?
+5. What is random forest?
+6. What is gradient boosting?
+7. How do ensemble methods work?
+8. What is the difference between classification and regression?
+9. What metrics are used to evaluate classification models?
+10. What is the confusion matrix?
+
+### Large Language Models (LLMs) Foundation
+
+1. What is a Large Language Model?
+2. What are transformers and how do they work?
+3. What is the attention mechanism?
+4. What is self-attention?
+5. What is BERT and how does it work?
+6. What is GPT and what makes it different from BERT?
+7. How do LLMs generate text?
+8. What is the role of pre-training and fine-tuning?
+9. What are some popular LLMs available today?
+10. How do LLMs understand context?
+
+### LLMs Applications & Usage
+
+1. What are the practical applications of LLMs?
+2. How can LLMs be used for question answering?
+3. What is prompt engineering?
+4. What are few-shot learning and zero-shot learning?
+5. How can LLMs be fine-tuned for specific tasks?
+6. What are the limitations of LLMs?
+7. How can LLMs be made more efficient?
+8. What is the role of LLMs in code generation?
+9. How can LLMs assist in content creation?
+10. What are the ethical considerations when using LLMs?
+
+### RAG Systems
+
+1. What is RAG (Retrieval-Augmented Generation)?
+2. How does RAG improve upon standard LLM responses?
+3. What are the components of a RAG system?
+4. How do vector databases work in RAG?
+5. What are the benefits of using RAG systems?
+
+### Course & Instructor Information
+
+1. What is the name of the lecturer?
+2. Who teaches this course?
+3. What is the course about?
+4. Who is Dariush Salami?
+
+### Feature Engineering & Evaluation
+
+1. What is feature importance?
+2. How do you select relevant features?
+3. What is dimensionality reduction?
+4. What metrics are commonly used to evaluate machine learning models?
+
+---
+
+Feel free to ask any of these questions in the web interface or CLI! The system will search through the course materials and provide detailed answers with source references.
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
