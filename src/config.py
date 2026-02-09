@@ -12,7 +12,12 @@ class Config:
     
     # LLM Provider Configuration
     USE_OLLAMA = os.getenv("USE_OLLAMA", "false").lower() == "true"
-    USE_HUGGINGFACE = os.getenv("USE_HUGGINGFACE", "true").lower() == "true"
+    USE_HUGGINGFACE = os.getenv("USE_HUGGINGFACE", "false").lower() == "true"
+    USE_GROQ = os.getenv("USE_GROQ", "true").lower() == "true"
+    
+    # Groq Configuration (Free, Cloud-based - Recommended!)
+    GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+    GROQ_MODEL = os.getenv("GROQ_MODEL", "mixtral-8x7b-32768")
     
     # Ollama Configuration (Free, Local)
     OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
@@ -22,9 +27,9 @@ class Config:
     # Hugging Face Configuration (Free, Cloud)
     HUGGINGFACE_MODEL = os.getenv("HUGGINGFACE_MODEL", "HuggingFaceH4/zephyr-7b-beta")
     HUGGINGFACE_EMBEDDING_MODEL = os.getenv("HUGGINGFACE_EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
-    HUGGINGFACE_API_TOKEN = os.getenv("HUGGINGFACE_API_TOKEN")  # Optional, for rate limits
+    HUGGINGFACE_API_TOKEN = os.getenv("HUGGINGFACE_API_TOKEN")
     
-    # OpenAI Configuration (Fallback if USE_OLLAMA=false and USE_HUGGINGFACE=false)
+    # OpenAI Configuration (Fallback if others disabled)
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
     EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "text-embedding-ada-002")
     LLM_MODEL = os.getenv("LLM_MODEL", "gpt-3.5-turbo")

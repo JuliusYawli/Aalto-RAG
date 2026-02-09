@@ -25,20 +25,20 @@ class VectorStore:
         """
         self.persist_directory = persist_directory
         
-        # Choose embeddings based on configuration
-        if Config.USE_OLLAMA:
-            print(f"Using Ollama embeddings: {Config.OLLAMA_EMBEDDING_MODEL}")
-            self.embeddings = OllamaEmbeddings(
-                model=Config.OLLAMA_EMBEDDING_MODEL,
-                base_url=Config.OLLAMA_BASE_URL
-            )
-        elif Config.USE_HUGGINGFACE:
+        # Choose embeddings based on configuration (Priority: Groq/HF embeddings > Ollama > OpenAI)
+        if Config.USE_GROQ or Config.USE_HUGGINGFACE:
             model = embedding_model or Config.HUGGINGFACE_EMBEDDING_MODEL
             print(f"Using Hugging Face embeddings: {model}")
             self.embeddings = HuggingFaceEmbeddings(
                 model_name=model,
                 model_kwargs={'device': 'cpu'},
                 encode_kwargs={'normalize_embeddings': True}
+            )
+        elif Config.USE_OLLAMA:
+            print(f"Using Ollama embeddings: {Config.OLLAMA_EMBEDDING_MODEL}")
+            self.embeddings = OllamaEmbeddings(
+                model=Config.OLLAMA_EMBEDDING_MODEL,
+                base_url=Config.OLLAMA_BASE_URL
             )
         else:
             model = embedding_model or Config.EMBEDDING_MODEL

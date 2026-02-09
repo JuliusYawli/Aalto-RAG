@@ -5,6 +5,7 @@ Implements the Retrieval-Augmented Generation chain
 from typing import List, Dict
 from langchain_openai import ChatOpenAI
 from langchain_community.llms import Ollama, HuggingFaceHub
+from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.documents import Document
 from langchain_core.output_parsers import StrOutputParser
@@ -34,8 +35,16 @@ class RAGChain:
         self.vectorstore = vectorstore
         self.top_k = top_k
         
-        # Choose LLM based on configuration
-        if Config.USE_OLLAMA:
+        # Choose LLM based on configuration (Priority: Groq > Ollama > HuggingFace > OpenAI)
+        if Config.USE_GROQ and Config.GROQ_API_KEY:
+            model = llm_model or Config.GROQ_MODEL
+            print(f"Using Groq LLM: {model}")
+            self.llm = ChatGroq(
+                groq_api_key=Config.GROQ_API_KEY,
+                model_name=model,
+                temperature=temperature
+            )
+        elif Config.USE_OLLAMA:
             model = llm_model or Config.OLLAMA_MODEL
             print(f"Using Ollama LLM: {model}")
             self.llm = Ollama(
