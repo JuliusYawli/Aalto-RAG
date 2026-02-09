@@ -35,13 +35,13 @@ git clone https://github.com/JuliusYawli/Aalto-RAG.git
 cd Aalto-RAG
 ```
 
-2. Install dependencies:
+1. Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Set up your environment:
+1. Set up your environment:
 
 **For Free Ollama (Default):**
 
