@@ -4,9 +4,12 @@ Implements the Retrieval-Augmented Generation chain
 """
 from typing import List, Dict
 from langchain_openai import ChatOpenAI
-from langchain.chains import RetrievalQA
-from langchain.prompts import PromptTemplate
-from langchain.schema import Document
+from langchain_community.llms import Ollama
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.documents import Document
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.runnables import RunnablePassthrough
+from src.config import Config
 
 
 class RAGChain:
@@ -15,7 +18,7 @@ class RAGChain:
     def __init__(
         self, 
         vectorstore, 
-        llm_model: str = "gpt-3.5-turbo",
+        llm_model: str = None,
         temperature: float = 0.0,
         top_k: int = 4
     ):
@@ -24,16 +27,31 @@ class RAGChain:
         
         Args:
             vectorstore: Vector store for document retrieval
-            llm_model: OpenAI model to use
+            llm_model: Model to use (optional, uses Config default)
             temperature: Temperature for LLM (0.0 = deterministic)
             top_k: Number of documents to retrieve
         """
         self.vectorstore = vectorstore
-        self.llm = ChatOpenAI(model=llm_model, temperature=temperature)
         self.top_k = top_k
         
+        # Choose LLM based on configuration
+        if Config.USE_OLLAMA:
+            model = llm_model or Config.OLLAMA_MODEL
+            print(f"Using Ollama LLM: {model}")
+            self.llm = Ollama(
+                model=model,
+                base_url=Config.OLLAMA_BASE_URL,
+                temperature=temperature
+            )
+        else:
+            model = llm_model or Config.LLM_MODEL
+            print(f"Using OpenAI LLM: {model}")
+            self.llm = ChatOpenAI(model=model, temperature=temperature)
+        
+        self.retriever = self.vectorstore.as_retriever(search_kwargs={"k": self.top_k})
+        
         # Create custom prompt template
-        self.prompt_template = """You are a helpful assistant that answers questions based on the provided context. 
+        template = """You are a helpful assistant that answers questions based on the provided context. 
 Use the following pieces of context to answer the question at the end. 
 If you don't know the answer based on the context, just say that you don't know, don't try to make up an answer.
 
@@ -44,18 +62,17 @@ Question: {question}
 
 Answer: """
         
-        self.PROMPT = PromptTemplate(
-            template=self.prompt_template,
-            input_variables=["context", "question"]
-        )
+        self.prompt = ChatPromptTemplate.from_template(template)
         
-        # Create retrieval QA chain
-        self.qa_chain = RetrievalQA.from_chain_type(
-            llm=self.llm,
-            chain_type="stuff",
-            retriever=self.vectorstore.as_retriever(search_kwargs={"k": self.top_k}),
-            return_source_documents=True,
-            chain_type_kwargs={"prompt": self.PROMPT}
+        # Create RAG chain using LCEL (LangChain Expression Language)
+        def format_docs(docs):
+            return "\n\n".join(doc.page_content for doc in docs)
+        
+        self.qa_chain = (
+            {"context": self.retriever | format_docs, "question": RunnablePassthrough()}
+            | self.prompt
+            | self.llm
+            | StrOutputParser()
         )
     
     def ask(self, question: str) -> Dict:
@@ -68,8 +85,16 @@ Answer: """
         Returns:
             Dictionary with 'result' and 'source_documents'
         """
-        response = self.qa_chain.invoke({"query": question})
-        return response
+        # Get source documents
+        source_docs = self.retriever.invoke(question)
+        
+        # Get answer
+        answer = self.qa_chain.invoke(question)
+        
+        return {
+            "result": answer,
+            "source_documents": source_docs
+        }
     
     def get_relevant_documents(self, query: str) -> List[Document]:
         """

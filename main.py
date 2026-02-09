@@ -24,8 +24,7 @@ class RAGApplication:
         )
         
         self.vector_store = VectorStore(
-            persist_directory=Config.VECTORSTORE_PATH,
-            embedding_model=Config.EMBEDDING_MODEL
+            persist_directory=Config.VECTORSTORE_PATH
         )
         
         self.rag_chain = None
@@ -70,7 +69,6 @@ class RAGApplication:
         vectorstore = self.vector_store.load_vectorstore()
         self.rag_chain = RAGChain(
             vectorstore=vectorstore,
-            llm_model=Config.LLM_MODEL,
             top_k=Config.TOP_K_RESULTS
         )
         

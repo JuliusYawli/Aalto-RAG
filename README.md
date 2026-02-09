@@ -2,24 +2,29 @@
 
 A production-ready RAG (Retrieval-Augmented Generation) system for domain-specific question answering. This application combines the power of large language models with custom document retrieval to provide accurate, contextual answers based on your own documents.
 
+> **📝 Note:** This project is configured to use **free Ollama models** by default (no API key needed!). You can switch to OpenAI when you get credits by changing `USE_OLLAMA=false` in the `.env` file.
+
 ## 🌟 Features
 
 - **Multi-format Document Support**: Load PDF, TXT, and DOCX files
-- **Semantic Search**: Vector-based similarity search using OpenAI embeddings
+- **Semantic Search**: Vector-based similarity search with embeddings
 - **Context-Aware Answers**: LLM-powered responses grounded in your documents
 - **Source Attribution**: See which documents were used for each answer
 - **Multiple Interfaces**: 
   - Command-line interface (CLI)
   - Interactive Q&A mode
   - Jupyter notebook for experimentation
-- **Persistent Storage**: ChromaDB vector store for fast retrieval
+- **Persistent Storage**: FAISS vector store for fast retrieval
+- **Free Local Option**: Use Ollama for completely free local LLM and embeddings
+- **Flexible LLM Support**: Switch between Ollama (free) and OpenAI (paid)
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
 - Python 3.8 or higher
-- OpenAI API key ([Get one here](https://platform.openai.com/api-keys))
+- **Option 1 (Free):** [Ollama](https://ollama.ai) installed locally (recommended for students)
+- **Option 2 (Paid):** OpenAI API key ([Get one here](https://platform.openai.com/api-keys))
 
 ### Installation
 
@@ -34,10 +39,28 @@ cd Aalto-RAG
 pip install -r requirements.txt
 ```
 
-3. Set up your OpenAI API key:
+3. Set up your environment:
+
+**For Free Ollama (Default):**
 ```bash
-cp .env.example .env
-# Edit .env and add your OPENAI_API_KEY
+# Install Ollama (macOS)
+brew install ollama
+
+# Start Ollama service
+brew services start ollama
+
+# Download models
+ollama pull llama3.2
+ollama pull nomic-embed-text
+
+# The .env file is already configured for Ollama
+```
+
+**For OpenAI (When You Have Credits):**
+```bash
+# Edit .env file and change:
+# USE_OLLAMA=false
+# OPENAI_API_KEY=your_key_here
 ```
 
 ### Basic Usage

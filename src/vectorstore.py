@@ -1,30 +1,45 @@
 """
 Vector Store Module
-Handles document embedding and vector storage using ChromaDB
+Handles document embedding and vector storage using FAISS
 """
 import os
+import pickle
 from typing import List, Optional
-from langchain_community.vectorstores import Chroma
+from langchain_community.vectorstores import FAISS
 from langchain_openai import OpenAIEmbeddings
-from langchain.schema import Document
+from langchain_community.embeddings import OllamaEmbeddings
+from langchain_core.documents import Document
+from src.config import Config
 
 
 class VectorStore:
     """Manage vector store for document embeddings"""
     
-    def __init__(self, persist_directory: str, embedding_model: str = "text-embedding-ada-002"):
+    def __init__(self, persist_directory: str, embedding_model: str = None):
         """
         Initialize vector store
         
         Args:
             persist_directory: Directory to persist vector store
-            embedding_model: OpenAI embedding model to use
+            embedding_model: Embedding model to use (optional, uses Config default)
         """
         self.persist_directory = persist_directory
-        self.embeddings = OpenAIEmbeddings(model=embedding_model)
-        self.vectorstore: Optional[Chroma] = None
+        
+        # Choose embeddings based on configuration
+        if Config.USE_OLLAMA:
+            print(f"Using Ollama embeddings: {Config.OLLAMA_EMBEDDING_MODEL}")
+            self.embeddings = OllamaEmbeddings(
+                model=Config.OLLAMA_EMBEDDING_MODEL,
+                base_url=Config.OLLAMA_BASE_URL
+            )
+        else:
+            model = embedding_model or Config.EMBEDDING_MODEL
+            print(f"Using OpenAI embeddings: {model}")
+            self.embeddings = OpenAIEmbeddings(model=model)
+        
+        self.vectorstore: Optional[FAISS] = None
     
-    def create_vectorstore(self, documents: List[Document]) -> Chroma:
+    def create_vectorstore(self, documents: List[Document]) -> FAISS:
         """
         Create a new vector store from documents
         
@@ -32,7 +47,7 @@ class VectorStore:
             documents: List of documents to embed
             
         Returns:
-            ChromaDB vector store
+            FAISS vector store
         """
         if not documents:
             raise ValueError("No documents provided to create vector store")
@@ -40,21 +55,24 @@ class VectorStore:
         print(f"Creating vector store with {len(documents)} document chunks...")
         
         # Create the vector store
-        self.vectorstore = Chroma.from_documents(
+        self.vectorstore = FAISS.from_documents(
             documents=documents,
-            embedding=self.embeddings,
-            persist_directory=self.persist_directory
+            embedding=self.embeddings
         )
+        
+        # Save to disk
+        os.makedirs(self.persist_directory, exist_ok=True)
+        self.vectorstore.save_local(self.persist_directory)
         
         print(f"Vector store created and persisted to {self.persist_directory}")
         return self.vectorstore
     
-    def load_vectorstore(self) -> Chroma:
+    def load_vectorstore(self) -> FAISS:
         """
         Load existing vector store from disk
         
         Returns:
-            ChromaDB vector store
+            FAISS vector store
         """
         if not os.path.exists(self.persist_directory):
             raise ValueError(
@@ -63,19 +81,20 @@ class VectorStore:
             )
         
         print(f"Loading vector store from {self.persist_directory}...")
-        self.vectorstore = Chroma(
-            persist_directory=self.persist_directory,
-            embedding_function=self.embeddings
+        self.vectorstore = FAISS.load_local(
+            self.persist_directory,
+            self.embeddings,
+            allow_dangerous_deserialization=True
         )
         
         return self.vectorstore
     
-    def get_vectorstore(self) -> Chroma:
+    def get_vectorstore(self) -> FAISS:
         """
         Get the vector store (load if not already loaded)
         
         Returns:
-            ChromaDB vector store
+            FAISS vector store
         """
         if self.vectorstore is None:
             self.vectorstore = self.load_vectorstore()
