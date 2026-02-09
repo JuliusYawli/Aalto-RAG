@@ -52,7 +52,13 @@ class Config:
     @classmethod
     def validate(cls):
         """Validate required configuration"""
-        if cls.USE_OLLAMA:
+        if cls.USE_GROQ:
+            if not cls.GROQ_API_KEY:
+                raise ValueError(
+                    "GROQ_API_KEY not found. Please set it in .env file or Streamlit secrets."
+                )
+            return True
+        elif cls.USE_OLLAMA:
             # Ollama doesn't need API keys
             return True
         elif cls.USE_HUGGINGFACE:
@@ -63,6 +69,6 @@ class Config:
             if not cls.OPENAI_API_KEY:
                 raise ValueError(
                     "OPENAI_API_KEY not found. Please set it in .env file or environment, "
-                    "or set USE_HUGGINGFACE=true to use free Hugging Face models."
+                    "or set USE_GROQ=true to use free Groq API."
                 )
         return True
