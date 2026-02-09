@@ -16,7 +16,9 @@ class Config:
     LLM_MODEL = os.getenv("LLM_MODEL", "gpt-3.5-turbo")
     
     # Vector Store Configuration
-    VECTORSTORE_PATH = os.path.join(os.path.dirname(__file__), "..", "vectorstore")
+    VECTORSTORE_PATH = os.path.abspath(
+        os.path.join(os.path.dirname(__file__), "..", "vectorstore")
+    )
     CHUNK_SIZE = 1000
     CHUNK_OVERLAP = 200
     
@@ -24,7 +26,9 @@ class Config:
     TOP_K_RESULTS = 4
     
     # Document Directory
-    DOCUMENTS_PATH = os.path.join(os.path.dirname(__file__), "..", "documents")
+    DOCUMENTS_PATH = os.path.abspath(
+        os.path.join(os.path.dirname(__file__), "..", "documents")
+    )
     
     @classmethod
     def validate(cls):
