@@ -4,7 +4,7 @@ Implements the Retrieval-Augmented Generation chain
 """
 from typing import List, Dict
 from langchain_openai import ChatOpenAI
-from langchain_community.llms import Ollama
+from langchain_community.llms import Ollama, HuggingFaceHub
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.documents import Document
 from langchain_core.output_parsers import StrOutputParser
@@ -42,6 +42,17 @@ class RAGChain:
                 model=model,
                 base_url=Config.OLLAMA_BASE_URL,
                 temperature=temperature
+            )
+        elif Config.USE_HUGGINGFACE:
+            model = llm_model or Config.HUGGINGFACE_MODEL
+            print(f"Using Hugging Face LLM: {model}")
+            self.llm = HuggingFaceHub(
+                repo_id=model,
+                model_kwargs={
+                    "temperature": temperature,
+                    "max_new_tokens": 512,
+                },
+                huggingfacehub_api_token=Config.HUGGINGFACE_API_TOKEN
             )
         else:
             model = llm_model or Config.LLM_MODEL
