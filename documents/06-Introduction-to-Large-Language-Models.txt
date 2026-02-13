@@ -1,0 +1,28 @@
+06-Introduction to Large Language Models (LLMs)
+
+1. What are LLMs?
+- Definition and examples (GPT, BERT, etc.)
+
+2. Key Concepts
+- Pre-training and fine-tuning
+- Tokenization and embeddings
+
+3. Applications
+- Text generation
+- Question answering
+- Summarization
+
+4. Advantages
+- Versatility
+- State-of-the-art performance
+
+5. Limitations
+- Data and compute requirements
+- Bias and ethical concerns
+
+6. Future Directions
+- Ongoing research
+- Emerging models
+
+7. Conclusion
+- Importance of LLMs in AI
